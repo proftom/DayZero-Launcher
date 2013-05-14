@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="Dotjosh.DayZCommander.App.Ui.Controls.FavoriteControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+		<ToggleButton IsChecked="{Binding IsFavorite, Mode=TwoWay}"
+										  Checked="IsFavorite_Checked" 
+										  Unchecked="IsFavorite_UnChecked">
+			<ToggleButton.Template>
+				<ControlTemplate TargetType="ToggleButton">
+					<Path Data="F1M29.7109,8.46094C30.97,5.91272,33.0299,5.91272,34.2864,8.46094L38.7291,17.457C39.9869,20.0052,43.319,22.4244,46.1302,22.8359L56.0612,24.2799C58.8724,24.6862,59.5104,26.6459,57.4727,28.6289L50.2891,35.6354C48.2526,37.6172,46.9805,41.5338,47.4622,44.3373L49.1588,54.224C49.638,57.0267,47.9713,58.2357,45.4557,56.9127L36.5755,52.2448C34.0586,50.9219,29.9401,50.9219,27.4232,52.2448L18.5455,56.9127C16.0273,58.2357,14.3607,57.0267,14.8411,54.224L16.5377,44.3373C17.0195,41.5338,15.7474,37.6172,13.7109,35.6354L6.526,28.6289C4.48956,26.6459,5.125,24.6862,7.93878,24.2799L17.8672,22.8359C20.681,22.4244,24.013,20.0052,25.2721,17.457L29.7109,8.46094z" 
+							x:Name="Favorite"				 
+						  Stretch="Uniform" 
+											  Fill="{TemplateBinding IsChecked, Converter={StaticResource IsFavoriteToForegroundConverter}}" 
+											  Width="16" 
+											  Height="16" />
+				</ControlTemplate>
+			</ToggleButton.Template>
+		</ToggleButton>
+	</Grid>
+</UserControl>

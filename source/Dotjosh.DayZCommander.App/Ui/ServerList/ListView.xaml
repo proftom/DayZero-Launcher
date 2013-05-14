@@ -1,0 +1,263 @@
+﻿<UserControl x:Class="Dotjosh.DayZCommander.App.Ui.ServerList.ListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="324" d:DesignWidth="844">
+    <Grid>
+		<DataGrid ItemsSource="{Binding Servers}"
+				  Margin="0 0 0 0"
+				  Grid.Row="1"
+				  HorizontalAlignment="Stretch"
+				  VerticalAlignment="Stretch"
+					  VerticalScrollBarVisibility="Visible"
+						HorizontalScrollBarVisibility="Disabled"
+					  Background="Transparent"
+					 HeadersVisibility="Column"
+					  Foreground="#DDD"
+					  RowBackground="Transparent"
+					  BorderThickness="0"
+				  SelectionMode="Single"
+				  SelectionUnit="FullRow"
+					ColumnHeaderStyle="{StaticResource MetroDataGridHeader}"						  
+					  AutoGenerateColumns="False">
+			<DataGrid.RowStyle>
+				<Style TargetType="{x:Type DataGridRow}">
+					<EventSetter Event="MouseDoubleClick" Handler="RowDoubleClick"/>
+					<EventSetter Event="PreviewMouseLeftButtonDown" Handler="RowLeftButtonDown"/>
+					<Style.Triggers>
+						<Trigger Property="IsMouseOver"
+                           Value="True">
+							<Setter Property="Foreground"
+                               Value="#FFF" />
+							<Setter Property="Background"
+									Value="#555555"/>
+						</Trigger>
+					</Style.Triggers>
+					<Style.Resources>
+						<SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="#9CBFF2" />
+						<SolidColorBrush x:Key="{x:Static SystemColors.ControlTextBrushKey}" Color="#9CBFF2" />
+					</Style.Resources>
+				</Style>
+			</DataGrid.RowStyle>
+			<DataGrid.CellStyle>
+				<Style TargetType="DataGridCell">
+					<Setter Property="BorderThickness" Value="0"/>
+					<Setter Property="Padding" Value="2 2 8 2"/>
+					<Setter Property="Template">
+						<Setter.Value>
+							<ControlTemplate TargetType="{x:Type DataGridCell}">
+								<Border Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+									<ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+								</Border>
+							</ControlTemplate>
+						</Setter.Value>
+					</Setter>
+				</Style>
+			</DataGrid.CellStyle>
+			<DataGrid.Resources>
+				<SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" 
+                   Color="#555555"/>
+			</DataGrid.Resources>
+			<DataGrid.Columns>
+				<DataGridTemplateColumn
+											HeaderStyle="{StaticResource MetroDataGridHeader}"
+											Header=""
+											Width="30" >
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<ToggleButton IsChecked="{Binding IsFavorite, Mode=TwoWay}">
+								<ToggleButton.Template>
+									<ControlTemplate TargetType="ToggleButton">
+										<Path Data="F1M29.7109,8.46094C30.97,5.91272,33.0299,5.91272,34.2864,8.46094L38.7291,17.457C39.9869,20.0052,43.319,22.4244,46.1302,22.8359L56.0612,24.2799C58.8724,24.6862,59.5104,26.6459,57.4727,28.6289L50.2891,35.6354C48.2526,37.6172,46.9805,41.5338,47.4622,44.3373L49.1588,54.224C49.638,57.0267,47.9713,58.2357,45.4557,56.9127L36.5755,52.2448C34.0586,50.9219,29.9401,50.9219,27.4232,52.2448L18.5455,56.9127C16.0273,58.2357,14.3607,57.0267,14.8411,54.224L16.5377,44.3373C17.0195,41.5338,15.7474,37.6172,13.7109,35.6354L6.526,28.6289C4.48956,26.6459,5.125,24.6862,7.93878,24.2799L17.8672,22.8359C20.681,22.4244,24.013,20.0052,25.2721,17.457L29.7109,8.46094z" 
+											  Stretch="Uniform" 
+											  Fill="{TemplateBinding IsChecked, Converter={StaticResource IsFavoriteToForegroundConverter}}" 
+											  Width="16" 
+											  Height="16" />
+									</ControlTemplate>
+								</ToggleButton.Template>
+							</ToggleButton>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+				<DataGridTemplateColumn
+											HeaderStyle="{StaticResource MetroDataGridHeader}"
+											Header="NAME"	
+											SortMemberPath="Name"
+											Width="*" >
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<TextBlock Text="{Binding Name}"
+									   Margin="4 0 0 0"
+										   VerticalAlignment="Center"/>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>					
+				</DataGridTemplateColumn>
+				<DataGridTemplateColumn 
+											HeaderStyle="{StaticResource MetroDataGridHeaderCenter}"
+											Header="SETTINGS"	
+											SortMemberPath="Difficulty"
+											Width="120" >
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<StackPanel Orientation="Horizontal" 
+												VerticalAlignment="Center"
+												Margin="5 0 0 0"
+												HorizontalAlignment="Center">
+								<Path Data="F1M92.3135,168.9302C92.3135,168.9302,86.0455,180.2662,78.7445,182.1002L78.7265,162.6912 92.3435,162.6912z M77.2175,163.0122L63.3015,163.0122 63.3015,146.8562 77.2175,146.8562z M61.5755,145.0392L61.5915,168.6902C61.5915,168.6902 63.1525,178.6872 76.2245,185.7402 79.6935,187.6102 92.3565,174.2812 93.8995,169.1172L93.8995,145.0392z" 
+									  Stretch="Uniform" 
+									  ToolTipService.ToolTip="Armor"
+									  Fill="{Binding Info.Armor.Enabled, Converter={StaticResource EnabledSettingToForegroundConverter}}"
+									  Width="12" 
+									  VerticalAlignment="Center"
+									  Height="12" />
+
+								<Path Data="M21.4024,6.1134893C22.382831,6.1448646 24.770421,7.6760068 25.175942,8.0839891 25.600444,8.5045929 27.779454,14.903667 28.060155,15.11387 28.342656,15.324871 34.806884,17.785992 34.806884,17.785992 34.806884,17.785992 35.722289,18.698599 35.438388,19.892709 35.159085,21.089319 33.189679,20.806817 33.189679,20.806817 33.189679,20.806817 26.163646,18.347196 25.600444,17.925894 25.038642,17.50329 24.474738,16.589281 24.474738,16.589281L21.873228,23.058137C21.873228,23.058137 26.446149,28.749484 26.653848,29.592692 26.86415,30.436999 27.499553,40.767888 27.499553,40.767888 27.499553,40.767888 27.285352,42.667001 25.250842,42.667001 23.208533,42.667001 23.071134,40.487882 23.071134,40.487882 23.071134,40.487882 22.226729,31.562209 22.155129,31.001603 22.084128,30.436999 18.569813,26.922669 18.569813,26.922669L12.035985,41.26069C12.035984,41.26069 10.771579,42.877305 9.0821311,42.176797 7.394624,41.472291 7.9577965,39.434575 7.9577968,39.434575L15.547699,22.42133C15.547699,22.42133 14.776896,21.298922 14.706596,20.877119 14.635595,20.457914 14.565196,19.610808 14.565196,18.979302 14.565196,18.347196 16.673405,11.810542 16.673405,11.810542L14.209095,12.171244 9.2996023,18.698599C9.299602,18.698599,9.2708189,18.729515,9.2181916,18.77945L9.2084062,18.788596 9.3047872,18.860711C9.9321997,19.380239,10.224094,20.243466,9.9779472,21.074464L8.8282228,28.010638C8.4975371,29.117534,7.5405201,29.432532,6.4331146,29.100635L1.3934422,27.32194C0.28927279,26.992541,-0.23281527,25.933946,0.098601341,24.82775L2.7970541,18.930072C3.1284695,17.821976,4.2950737,17.195678,5.3992485,17.524477L6.3020139,17.793332 6.3131936,17.687105C6.3304159,17.553678 6.3529992,17.470789 6.352999,17.470789 6.3529992,17.470789 10.97998,10.263728 11.611484,9.5605721 12.246185,8.8554859 20.39852,6.1860937 21.312026,6.1152231 21.340611,6.113026 21.370773,6.1124774 21.4024,6.1134893z M25.9173,0C27.72379,0 29.184001,1.4629364 29.184001,3.2701697 29.184001,5.0747232 27.72379,6.5389998 25.9173,6.5389999 24.11011,6.5389998 22.648,5.0747232 22.648,3.2701697 22.648,1.4629364 24.11011,0 25.9173,0z" 
+									  Stretch="Uniform" 
+									  ToolTipService.ToolTip="Third Person"
+									  Fill="{Binding Info.ThirdPerson.Enabled, Converter={StaticResource EnabledSettingToForegroundConverter}}"
+									  Width="12" 
+									  VerticalAlignment="Center"
+									  Height="12"  />
+
+								<Path Data="M61.3577,14.4764C61.2181,14.0168,60.8086,13.677,60.304,13.677L7.28613,13.677C6.83594,13.677 6.45734,13.8567 6.25812,14.1926 2.52667,20.9491 8.24963,24.3893 9.31213,29.457 7.61945,37.2655 0.976868,40.121 1.17151,49.8125 6.25745,50.8319 10.9869,52.2096 17.4547,51.8502 20.2923,46.5442 21.236,39.3463 25.5967,35.5651 30.2526,35.9987 34.2259,37.1145 39.8453,36.5833 43.2067,34.8567 41.6058,28.1666 44.9349,26.4036 50.0218,26.4036 55.1123,26.4036 60.2008,26.4036 60.3717,21.8295 63.5615,18.7825 61.3577,14.4764z M38.3746,34.6172C34.2711,35.3202 28.8802,34.3242 27.0719,32.5494 27.0996,32.4491 27.1338,32.3489 27.1338,32.2395L27.1338,28.7487C28.068,27.6705 30.2721,32.6185 32.0201,32.5 34.4805,31.7526 29.3096,27.5311 32.0201,26.1445 34.1387,26.1445 36.2568,26.1445 38.3746,26.1445 39.9319,27.6862 39.9339,33.0768 38.3746,34.6172z" 
+									  Stretch="Uniform" 
+									  ToolTipService.ToolTip="Tracers" 
+									  Fill="{Binding Info.Tracers.Enabled, Converter={StaticResource EnabledSettingToForegroundConverter}}"
+									  Width="12" 
+									  VerticalAlignment="Center"
+									  Height="12"/>								
+
+								<TextBlock Text="N" Width="13" FontSize="14" Margin="2 0 0 0" TextAlignment="Center" ToolTipService.ToolTip="Nameplates" Foreground="{Binding Info.Nameplates.Enabled, Converter={StaticResource EnabledSettingToForegroundConverter}}" />
+
+								<TextBlock Text="+" Width="13" FontSize="16" Margin="0 -3 2 0" TextAlignment="Center" ToolTipService.ToolTip="Crosshairs" Foreground="{Binding Info.Crosshairs.Enabled, Converter={StaticResource EnabledSettingToForegroundConverter}}" />
+
+
+								<Path Data="M32.341598,1.4469999C40.868511,1.4469998 47.778999,2.2085577 47.778999,3.1484397 47.778999,4.0884322 40.868511,4.85 32.341598,4.85 23.81489,4.85 16.902,4.0884322 16.902,3.1484397 16.902,2.2085577 23.81489,1.4469998 32.341598,1.4469999z M3.8173161,0.12199983C5.4077842,10.2902 24.027158,22.251381 24.027158,22.251381 25.991382,37.749239 18.923597,35.148779 18.923597,35.148779 15.617556,37.076025 12.814824,33.690546 12.814824,33.690546 8.0601671,35.894899 6.4331863,30.134462 6.4331868,30.134462 1.616419,30.001562 2.5126095,22.293079 2.51261,22.293079 -3.0870678,20.089829 2.4214184,12.537653 2.4214184,12.537653 -2.6001239,9.7837287 3.8173156,0.12199982 3.8173161,0.12199983z M58.964012,0C58.964012,-1.7881393E-07 65.380951,9.6627541 60.359199,12.41659 60.359199,12.41659 65.86895,19.967323 60.267399,22.173004 60.267399,22.173004 61.163891,29.879936 56.348133,30.014134 56.348133,30.014134 54.72155,35.771883 49.966392,33.570002 49.966392,33.570002 47.164318,36.954172 43.859047,35.028391 43.859047,35.028391 36.790409,37.627367 38.754894,22.130005 38.754894,22.130005 57.373523,10.16791 58.964012,0z" 
+									  Stretch="Uniform" 
+									  ToolTipService.ToolTip="Death Messages" 
+										Fill="{Binding Info.DeathMessages.Enabled, Converter={StaticResource EnabledSettingToForegroundConverter}}"									  
+									  Width="12" 
+									  VerticalAlignment="Center"
+									  Height="12" />
+
+								<Path Data="M11.82135,16.121C13.594923,16.121 15.035,17.412024 15.035001,19.004551 15.035,20.596977 13.594923,21.888001 11.82135,21.888001 10.045478,21.888001 8.6080003,20.596977 8.6079998,19.004551 8.6080003,17.412024 10.045478,16.121 11.82135,16.121z M1.5124998,14.900481C1.8899374,14.910093,2.263957,15.063744,2.5452042,15.358643L9.6805816,22.535034 13.886205,22.537735 21.065842,15.358643C21.628337,14.768844 22.560629,14.744043 23.151824,15.306543 23.741619,15.868443 23.765219,16.800041 23.203924,17.391241L15.703989,24.901632 15.703989,49.802601C15.703989,50.699803 14.978695,51.424999 14.081703,51.424999 13.188211,51.424999 12.461818,50.699803 12.461818,49.802601L12.459218,36.29612 11.149229,36.29612 11.134929,49.802601C11.134929,50.699803 10.409835,51.424999 9.515173,51.424999 8.6206508,51.424999 7.8940973,50.699803 7.8940978,49.802601L7.9044671,24.901632 0.40587997,17.391241C-0.15527248,16.800041 -0.13183498,15.868443 0.45928574,15.306543 0.75420666,15.025293 1.1350622,14.890868 1.5124998,14.900481z M32.4752,1.7190003C35.139188,1.7190001 37.297999,3.5380818 37.297999,5.7790557 37.297999,8.020629 35.139188,9.8390008 32.4752,9.8390008 29.811211,9.8390008 27.655001,8.020629 27.655001,5.7790557 27.655001,3.5380818 29.811211,1.7190001 32.4752,1.7190003z M17.962785,0.00064291918C18.494378,0.0138264,19.021097,0.22981559,19.415641,0.64552765L29.459717,10.751021 35.384145,10.75362 45.493417,0.64552765C46.28371,-0.18589687 47.597495,-0.21842872 48.428185,0.5725904 49.260171,1.3636083 49.292874,2.677394 48.499681,3.5081478L37.945212,14.081735 37.943912,49.142487C37.943912,50.403595 36.923123,51.424999 35.660241,51.424999 34.399655,51.424999 33.378867,50.403595 33.378867,49.142487L33.376369,30.125506 31.529992,30.125506 31.511691,49.142487C31.511691,50.403595 30.490905,51.424999 29.22922,51.424999 27.970136,51.424999 26.949349,50.403595 26.949349,49.142487L26.962349,14.081735 16.406478,3.5081478C15.616189,2.677394 15.649889,1.3636083 16.480679,0.5725904 16.894723,0.17708102 17.431191,-0.012540888 17.962785,0.00064291918z"
+									  Stretch="Uniform" 
+									  ToolTipService.ToolTip="Scores"
+									  Fill="{Binding Info.Scores.Enabled, Converter={StaticResource EnabledSettingToForegroundConverter}}"
+									  Width="12" 
+									  Margin="4 0 0 0"
+									  VerticalAlignment="Center"
+									  Height="12" />
+								
+								<Path Data="F1M339.3071,1185.249L339.3071,1188.437 337.2111,1188.437 337.2111,1185.251C336.3721,1184.876 335.7831,1184.085 335.7831,1183.151 335.7831,1181.861 336.8901,1180.815 338.2561,1180.815 339.6281,1180.815 340.7371,1181.861 340.7371,1183.151 340.7371,1184.082 340.1471,1184.876 339.3071,1185.249 M331.6851,1168.456C331.6851,1165.017 334.4711,1162.228 337.9101,1162.228 341.3491,1162.228 344.1411,1165.017 344.1411,1168.456L344.1411,1171.745C344.1411,1172.16,344.0991,1172.565,344.0211,1172.959L331.8051,1172.959C331.7281,1172.565,331.6851,1172.16,331.6851,1171.745z M346.2351,1173.133C346.2611,1172.861,346.2761,1172.586,346.2761,1172.308L346.2761,1167.893C346.2761,1163.274 342.5291,1159.528 337.9101,1159.528 333.2921,1159.528 329.5511,1163.274 329.5511,1167.893L329.5511,1172.308C329.5511,1172.586 329.5661,1172.861 329.5921,1173.132 327.2211,1173.733 325.4651,1175.875 325.4651,1178.432L325.4651,1189.558C325.4651,1192.578,327.9121,1195.028,330.9361,1195.028L344.8901,1195.028C347.9091,1195.028,350.3601,1192.578,350.3601,1189.558L350.3601,1178.432C350.3601,1175.876,348.6031,1173.733,346.2351,1173.133"
+										Stretch="Uniform" 
+									  ToolTipService.ToolTip="Has Password"
+										Fill="{Binding HasPassword, Converter={StaticResource EnabledSettingToForegroundConverter}}"
+										Width="12" 
+									   VerticalAlignment="Center"
+										Height="12" />
+							</StackPanel>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+
+				<DataGridTemplateColumn
+											HeaderStyle="{StaticResource MetroDataGridHeaderRight}"
+											Header="VERSION"	
+											SortMemberPath="DayZVersion"
+											Width="100" >
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<StackPanel>
+								<StackPanel Orientation="Horizontal"
+											HorizontalAlignment="Right">
+									<TextBlock Text="Arma: " 
+											   Foreground="#AAA"
+											   FontSize="10"/>
+									<TextBlock Text="{Binding Arma2Version}"
+											   Foreground="#CCC"
+											   FontWeight="Bold"
+											   FontSize="10"/>
+								</StackPanel>
+								<StackPanel Orientation="Horizontal"
+											Margin="0 3 0 0"
+											HorizontalAlignment="Right">
+									<TextBlock Text="DayZ: " 
+											   Foreground="#AAA"
+											   FontSize="10"/>
+									<TextBlock Text="{Binding DayZVersion}"
+											   Foreground="#CCC"
+											   FontWeight="Bold"
+											   FontSize="10"/>
+								</StackPanel>
+							</StackPanel>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+				
+				<DataGridTemplateColumn Width="80" 
+												Header="DAY/NIGHT" 
+												SortMemberPath="ServerTime" 
+												HeaderStyle="{StaticResource MetroDataGridHeaderRight}">
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<TextBlock Text="{Binding ServerTime, StringFormat={}{0:h:mm tt}}"
+										   TextAlignment="Right"
+										   HorizontalAlignment="Right"
+										   VerticalAlignment="Center"
+										Foreground="{Binding ServerTime, Converter={StaticResource TimeToColorConverter}}"/>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+				<DataGridTemplateColumn Width="66" Header="PLAYERS" SortMemberPath="CurrentPlayers" HeaderStyle="{StaticResource MetroDataGridHeaderRight}">
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<StackPanel Orientation="Horizontal" 
+											VerticalAlignment="Center"
+											HorizontalAlignment="Right">
+								<TextBlock Text="{Binding CurrentPlayers}" Foreground="{Binding Converter={StaticResource ServerFullnessToColorConverter}}"/>
+								<TextBlock Text=" / " Foreground="{Binding Converter={StaticResource ServerFullnessToColorConverter}}"/>
+								<TextBlock Text="{Binding MaxPlayers}" Foreground="{Binding Converter={StaticResource ServerFullnessToColorConverter}}"/>
+								<StackPanel.ToolTip>
+									<ToolTip>
+										<ItemsControl ItemsSource="{Binding Players}">
+											<ItemsControl.Template>
+												<ControlTemplate>
+													<UniformGrid Columns="4"
+																   IsItemsHost="True"/>
+												</ControlTemplate>
+											</ItemsControl.Template>
+											<ItemsControl.ItemTemplate>
+												<DataTemplate>
+													<TextBlock Text="{Binding Name}" 
+																   Foreground="#333"
+																   Margin="0 0 6 0"/>
+												</DataTemplate>
+											</ItemsControl.ItemTemplate>
+										</ItemsControl>
+									</ToolTip>
+								</StackPanel.ToolTip>
+							</StackPanel>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>	
+				<DataGridTemplateColumn Width="57" Header="PING" SortMemberPath="Ping" HeaderStyle="{StaticResource MetroDataGridHeaderRight}">
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<TextBlock Text="{Binding Ping, StringFormat={}{0}ms}" 
+											Foreground="{Binding Ping, Converter={StaticResource PingToForegroundConverter}}"
+											HorizontalAlignment="Right"
+											VerticalAlignment="Center" 
+											TextAlignment="Right">
+
+							</TextBlock>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+			</DataGrid.Columns>
+		</DataGrid>
+
+	</Grid>
+</UserControl>

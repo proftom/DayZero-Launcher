@@ -1,0 +1,376 @@
+﻿<Window x:Class="Dotjosh.DayZCommander.App.Ui.MainWindow"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:ServerList="clr-namespace:Dotjosh.DayZCommander.App.Ui.ServerList"
+		xmlns:Friends="clr-namespace:Dotjosh.DayZCommander.App.Ui.Friends"
+		xmlns:Core="clr-namespace:Dotjosh.DayZCommander.App.Core" xmlns:Ui="clr-namespace:Dotjosh.DayZCommander.App.Ui"
+		xmlns:Favorites="clr-namespace:Dotjosh.DayZCommander.App.Ui.Favorites"
+		xmlns:Recent="clr-namespace:Dotjosh.DayZCommander.App.Ui.Recent" Title="DayZero Launcher" 
+		Height="470" 
+		Width="870"
+		MouseLeftButtonDown="MainWindow_OnMouseLeftButtonDown"
+		MouseDoubleClick="MainWindow_OnMouseDoubleClick"
+		Style="{StaticResource MainWindowStyle}"
+		>
+	<Border Background="#222222"
+			BorderBrush="#BBBBBB"
+			x:Name="VisualRoot"
+			BorderThickness="1">
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition />
+			</Grid.RowDefinitions>
+
+			<Ui:SettingsView DataContext="{Binding SettingsViewModel}"
+							 Grid.RowSpan="5"
+							 Width="590"
+							 HorizontalAlignment="Right"
+							 Canvas.ZIndex="1001"
+								 Visibility="{Binding IsVisible, Converter={StaticResource BooleanToVisibilityCollapsedConverter}, FallbackValue=Hidden}"/>
+
+			<Ui:UpdatesView DataContext="{Binding UpdatesViewModel}"
+							 Grid.RowSpan="5"
+							 Width="500"
+							 HorizontalAlignment="Right"
+							 Canvas.ZIndex="1000"
+								 Visibility="{Binding IsVisible, Converter={StaticResource BooleanToVisibilityCollapsedConverter}, FallbackValue=Hidden}"/>
+
+
+
+
+			<Rectangle Fill="#444444"
+					Grid.Row="1"
+					IsHitTestVisible="True"
+					Grid.RowSpan="4"
+					Grid.ColumnSpan="2"/>
+
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+
+                <Image Source="../Assets/Images/dayzero_logo.png"
+					   Width="200"
+					   IsHitTestVisible="False"
+					   Margin="30 10 0 10"/>
+
+				<Grid Grid.Column="1">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition/>
+					</Grid.RowDefinitions>
+
+					<StackPanel HorizontalAlignment="Right"
+									Margin="0 10 20 0"
+								Grid.Row="0"
+									Orientation="Horizontal">
+
+
+
+						<Button
+								Margin="12 0 0 0"
+								Style="{StaticResource MetroTextButtonStyle}"
+								Click="MinimizeClick" >
+							<Button.Template>
+								<ControlTemplate>
+									<Border Background="#222"
+												IsHitTestVisible="True">
+										<Canvas Width="11"
+													Height="11">
+											<Line Stroke="{TemplateBinding Foreground}" 
+													  Width="11" 
+													  StrokeThickness="2" Canvas.Top="10"
+													  X1="1" X2="11"/>
+										</Canvas>
+									</Border>
+								</ControlTemplate>
+							</Button.Template>
+						</Button>
+
+						<Button
+								Margin="12 0 0 0"
+								Style="{StaticResource MetroTextButtonStyle}"
+								Click="ToggleMaxamimizeClick" >
+							<Button.Template>
+								<ControlTemplate>
+									<Border Background="#222"
+												IsHitTestVisible="True">
+										<Canvas Width="11"
+													Height="11">
+											<Line Stroke="{TemplateBinding Foreground}" 
+													  Width="11" 
+													  StrokeThickness="2" Canvas.Top="2"
+													  X1="1" X2="11"/>
+											<Rectangle Stroke="{TemplateBinding Foreground}"
+														   StrokeThickness="1"
+													   Width="11"
+													   Height="11">
+
+											</Rectangle>
+										</Canvas>
+									</Border>
+								</ControlTemplate>
+							</Button.Template>
+						</Button>
+
+						<Button
+								Margin="12 0 0 0"
+								Style="{StaticResource MetroTextButtonStyle}"
+								Click="CloseButtonClick" >
+							<Button.Template>
+								<ControlTemplate>
+									<Border Background="#222"
+												IsHitTestVisible="True">
+										<Path Data="F1M54.0573,47.8776L38.1771,31.9974 54.0547,16.1198C55.7604,14.4141 55.7604,11.6511 54.0573,9.94531 52.3516,8.23962 49.5859,8.23962 47.8802,9.94531L32.0026,25.8229 16.1224,9.94531C14.4167,8.23962 11.6511,8.23962 9.94794,9.94531 8.24219,11.6511 8.24219,14.4141 9.94794,16.1198L25.8255,32 9.94794,47.8776C8.24219,49.5834 8.24219,52.3477 9.94794,54.0534 11.6511,55.7572 14.4167,55.7585 16.1224,54.0534L32.0026,38.1745 47.8802,54.0534C49.5859,55.7585 52.3516,55.7572 54.0573,54.0534 55.7604,52.3477 55.763,49.5834 54.0573,47.8776z" Stretch="Uniform"
+											  Fill="{TemplateBinding Foreground}" 
+											  Width="11" 
+											  Height="11"  />
+									</Border>
+								</ControlTemplate>
+							</Button.Template>
+						</Button>
+					</StackPanel>
+
+					<StackPanel
+							Orientation="Horizontal"
+							Margin="0 20 45 4"
+							HorizontalAlignment="Right"
+						  VerticalAlignment="Bottom"
+						  Grid.Row="1">
+
+						<StackPanel 
+							Orientation="Horizontal"
+							Visibility="{Binding ServerList.DownloadingServerList, Converter={StaticResource BooleanToVisibilityCollapsedConverter}, ConverterParameter=true}">
+							<StackPanel Orientation="Horizontal"
+								HorizontalAlignment="Right"
+								Visibility="{Binding ServerList.RefreshAllBatch.UnprocessedServersCount, Converter={StaticResource CountToVisibilityConverter}}">
+								<Path Data="F1M2278.07,1272.94C2265.47,1272.94,2254.91,1281.77,2252.19,1293.55L2241.99,1293.43 2255.8,1315.74 2270.14,1293.77 2260.66,1293.66C2263.13,1286.36 2269.96,1281.07 2278.07,1281.07 2288.24,1281.07 2296.52,1289.35 2296.52,1299.52 2296.52,1309.7 2288.24,1317.98 2278.07,1317.98 2274.31,1317.98 2270.81,1316.84 2267.89,1314.9L2263.45,1321.7C2267.65,1324.48 2272.67,1326.11 2278.07,1326.11 2292.73,1326.11 2304.65,1314.18 2304.65,1299.52 2304.65,1284.87 2292.73,1272.94 2278.07,1272.94" 
+											  Stretch="Uniform" 
+											  Fill="LightGreen" 
+											  Width="14" Height="14" Margin="0,3,5,0" />
+								<TextBlock Text="{Binding ServerList.RefreshAllBatch.InProgressText}" Foreground="LightGreen"  FontSize="14"/>
+								<TextBlock Text="( " Foreground="LightGreen" FontSize="12" Margin="0 2 0 0"/>
+								<TextBlock Text="{Binding ServerList.RefreshAllBatch.ProcessedServersCount}" Foreground="#FFF" Margin="0 2 0 0" FontSize="12"/>
+								<TextBlock Text=" / " Foreground="#FFF" FontSize="12" Margin="0 2 0 0"/>
+								<TextBlock Text="{Binding ServerList.RefreshAllBatch.TotalCount}" Foreground="LightGreen" FontSize="12" Margin="0 2 0 0"/>
+								<TextBlock Text=" )" Foreground="LightGreen" FontSize="12" Margin="0 2 0 0"/>
+							</StackPanel>
+							<Button Click="RefreshAll_Click"
+								HorizontalAlignment="Right"
+								Visibility="{Binding ServerList.RefreshAllBatch.UnprocessedServersCount, Converter={StaticResource ZeroToVisibilityConverter}}"
+								Margin="0 0 0 0"
+								Style="{StaticResource MetroTextButtonStyle}">
+								<Button.Template>
+									<ControlTemplate>
+										<Border IsHitTestVisible="True"
+											  Background="#222">
+											<StackPanel Orientation="Horizontal">
+												<Path Data="F1M2278.07,1272.94C2265.47,1272.94,2254.91,1281.77,2252.19,1293.55L2241.99,1293.43 2255.8,1315.74 2270.14,1293.77 2260.66,1293.66C2263.13,1286.36 2269.96,1281.07 2278.07,1281.07 2288.24,1281.07 2296.52,1289.35 2296.52,1299.52 2296.52,1309.7 2288.24,1317.98 2278.07,1317.98 2274.31,1317.98 2270.81,1316.84 2267.89,1314.9L2263.45,1321.7C2267.65,1324.48 2272.67,1326.11 2278.07,1326.11 2292.73,1326.11 2304.65,1314.18 2304.65,1299.52 2304.65,1284.87 2292.73,1272.94 2278.07,1272.94" 
+											  Stretch="Uniform" 
+											  Fill="{TemplateBinding Foreground}" 
+											  Width="14" Height="14" Margin="0,3,3,0" />
+												<TextBlock Text="refresh all servers"
+													   FontSize="14"
+														   Padding="2 0 0 0"
+													   VerticalAlignment="Center"
+													   Foreground="{TemplateBinding Foreground}"/>
+											</StackPanel>
+										</Border>
+									</ControlTemplate>
+								</Button.Template>
+							</Button>
+						</StackPanel>
+
+						<StackPanel 
+							Orientation="Horizontal"
+							Visibility="{Binding ServerList.DownloadingServerList, Converter={StaticResource BooleanToVisibilityCollapsedConverter}}">
+	
+							<Path Data="F1M624.846,564.374L624.846,546.742 645.182,567.074 645.182,527.111 658.123,527.111 658.123,566.933 678.352,546.705 678.321,564.374 651.584,591.111 624.846,564.374z" 
+								  Stretch="Uniform" Fill="LightGreen" Width="14" Height="14" Margin="0,3,3,0" />
+							<TextBlock Text="downloading servers list... " 
+									   Foreground="LightGreen"  
+									   FontSize="14"
+									   TextAlignment="Right"/>
+						</StackPanel>
+
+						<Button 
+							Margin="16 0 0 0"
+							Click="Updates_Click"
+							Foreground="{Binding UpdatesViewModel.Status, Converter={StaticResource UpdateStatusToForegroundConverter}}"
+								Style="{StaticResource MetroTextButtonStyle}">
+							<Button.Template>
+								<ControlTemplate>
+									<Border IsHitTestVisible="True"
+											Margin="0"
+											Padding="0"
+											  Background="#222">
+										<StackPanel Orientation="Horizontal">
+											<Path Data="F1M761.907,555.626L761.907,573.258 741.571,552.926 741.571,592.889 728.63,592.889 728.63,553.067 708.4,573.295 708.432,555.626 735.169,528.889 761.907,555.626z" 
+													Stretch="Uniform" 
+													Fill="{TemplateBinding Foreground}" 
+													Width="14" 
+													Height="14"
+													Margin="0,4,0,0" />
+											<TextBlock Text="versions"
+													   VerticalAlignment="Top"
+														   Margin="4 0 0 0"
+															FontSize="14"
+														   Foreground="{TemplateBinding Foreground}"/>
+										</StackPanel>
+									</Border>
+								</ControlTemplate>
+							</Button.Template>
+						</Button>
+	
+						<Button 
+							Margin="16 0 0 0"
+							Click="Settings_Click"
+								Style="{StaticResource MetroTextButtonStyle}">
+							<Button.Template>
+								<ControlTemplate>
+									<Border IsHitTestVisible="True"
+											Margin="0"
+											Padding="0"
+											  Background="#222">
+										<StackPanel Orientation="Horizontal">
+											<Path Data="F1M-1782,1953.02C-1781.98,1951.66,-1782.12,1950.33,-1782.32,1949.03L-1776.88,1944.7C-1778.28,1939.49,-1780.97,1934.82,-1784.62,1931.06L-1791.11,1933.51C-1793.17,1931.81,-1795.5,1930.45,-1798.03,1929.48L-1799.07,1922.62C-1801.57,1921.95 -1804.19,1921.55 -1806.9,1921.53 -1809.61,1921.52 -1812.24,1921.88 -1814.76,1922.52L-1815.87,1929.36C-1818.41,1930.31,-1820.77,1931.64,-1822.84,1933.31L-1829.31,1930.78C-1833,1934.49,-1835.75,1939.12,-1837.22,1944.31L-1831.84,1948.71C-1832.05,1950.01 -1832.2,1951.34 -1832.21,1952.7 -1832.22,1954.07 -1832.09,1955.4 -1831.89,1956.7L-1837.33,1961.03C-1835.92,1966.24,-1833.23,1970.91,-1829.58,1974.67L-1823.09,1972.22C-1821.04,1973.91,-1818.7,1975.27,-1816.17,1976.26L-1815.15,1983.11C-1812.64,1983.78 -1810.02,1984.18 -1807.3,1984.2 -1804.59,1984.21 -1801.97,1983.85 -1799.45,1983.22L-1798.33,1976.37C-1795.79,1975.42,-1793.44,1974.09,-1791.36,1972.43L-1784.91,1974.96C-1781.21,1971.24,-1778.46,1966.61,-1776.99,1961.42L-1782.37,1957.02C-1782.15,1955.72,-1782.01,1954.39,-1782,1953.02 M-1807.19,1965.84C-1814.35,1965.8 -1820.12,1959.95 -1820.07,1952.78 -1820.03,1945.61 -1814.18,1939.84 -1807.02,1939.89 -1799.85,1939.94 -1794.08,1945.78 -1794.13,1952.95 -1794.17,1960.12 -1800.02,1965.89 -1807.19,1965.84" 
+													Stretch="Uniform" 
+													Fill="{TemplateBinding Foreground}" 
+													Width="14" 
+													Height="14"
+													Margin="0,4,0,0" />
+											<TextBlock Text="settings"
+													   VerticalAlignment="Top"
+														   Margin="4 0 0 0"
+															FontSize="14"
+														   Foreground="{TemplateBinding Foreground}"/>
+										</StackPanel>
+									</Border>
+								</ControlTemplate>
+							</Button.Template>
+						</Button>
+						<!--
+						<Button 
+							Margin="16 0 0 0"
+							Click="Donate_Click"
+							Foreground="#FFE7EC"
+								Style="{StaticResource MetroTextButtonStyle}">
+							<Button.Template>
+								<ControlTemplate>
+									<Border IsHitTestVisible="True"
+											Margin="0"
+											Padding="0"
+											  Background="#222">
+										<StackPanel Orientation="Horizontal">
+											<Path Data="M39.592001,30.182999L37.645201,41.764506C37.645201,44.579056 30.621804,46.862997 21.960406,46.862997 13.295008,46.862997 6.2741598,44.579056 6.2741601,41.764506L4.6010006,31.804728C4.8574707,31.877029 5.1218206,31.93953 5.4056905,31.982431 5.6868205,32.02343 5.9758801,32.045632 6.2611604,32.045632 7.6193094,32.045632 8.7846093,31.576223 9.8092093,31.161517 10.552909,30.86131 11.253409,30.576804 11.907009,30.522805 12.034609,30.513704 12.162209,30.508503 12.285909,30.508503 14.043709,30.508503 15.526808,31.517621 17.244207,32.684942 18.042308,33.229251 18.866607,33.788564 19.763806,34.270271 21.281907,35.086687 22.918707,35.482492 24.770207,35.482492 25.783206,35.482492 26.870404,35.361392 28.086705,35.114687 29.972104,34.73508 31.322304,33.686962 32.517605,32.761744 32.920105,32.450638 33.297604,32.159534 33.693406,31.888129 34.836703,31.107415 35.869303,30.727207 37.500704,30.485005 37.714304,30.454503 37.935702,30.429703 38.159503,30.400402 38.594504,30.351602 39.086703,30.290399 39.592001,30.182999z M10.687726,7.0524635C11.923187,7.036974 13.133493,7.4100552 14.234787,8.2693024 17.5043,10.820013 17.727001,15.75868 21.894917,15.75868 26.042033,15.75868 26.276534,10.826513 29.553746,8.3324108 35.980872,3.4419212 42.937998,14.832205 42.937998,20.205761 42.937998,22.318404 42.631999,24.908134 41.169894,26.55199 40.200987,27.642461 38.59178,27.630061 37.241477,27.829356 35.51467,28.083849 34.169865,28.513537 32.697159,29.51871 31.047352,30.64368 29.751748,32.064842 27.734839,32.474331 25.27393,32.971717 22.87012,33.025116 20.600711,31.803849 17.710101,30.25309 15.320691,27.566263 11.765977,27.853355 9.6189685,28.02525 7.8648617,29.656106 5.6697437,29.325416 3.6839555,29.026523 2.6397015,27.645061 1.5640671,26.061804 1.006875,25.241525 0.75034404,24.353449 0.45737267,23.421875 -1.8016286,16.222349 4.7350447,7.1270943 10.687726,7.0524635z M21.8967,0C24.904335,0 27.343001,2.4402332 27.343001,5.4481907 27.343001,8.4568081 24.904335,10.895 21.8967,10.895 18.887766,10.895 16.449001,8.4568081 16.449001,5.4481907 16.449001,2.4402332 18.887766,0 21.8967,0z" 
+													Stretch="Uniform" 
+													Fill="{TemplateBinding Foreground}" 
+													Width="14" 
+													Height="14"
+													Margin="0,4,0,0" />
+											<TextBlock Text="donate"
+													   VerticalAlignment="Top"
+														   Margin="4 0 0 0"
+															FontSize="14"
+														   Foreground="{TemplateBinding Foreground}"/>
+										</StackPanel>
+									</Border>
+								</ControlTemplate>
+							</Button.Template>
+						</Button>
+                        -->
+					</StackPanel>
+
+				</Grid>
+			</Grid>
+
+			<Grid Grid.Row="1" 
+						Grid.RowSpan="3" 
+						Margin="30 0 20 25"
+						Grid.Column="0">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				
+						<ProgressBar 
+							 HorizontalAlignment="Stretch" 
+							 BorderThickness="0" 
+							 Height="7" 
+							 Background="Transparent"
+							Margin="-30 0 -20 0"
+							 Visibility="{Binding ServerList.RefreshAllBatch.UnprocessedServersCount, Converter={StaticResource NonZeroToVisibilityHiddenConverter}}"
+							 Maximum="{Binding ServerList.RefreshAllBatch.TotalCount, FallbackValue=0}" 
+							 Value="{Binding ServerList.RefreshAllBatch.ProcessedServersCount, FallbackValue=0}" />
+
+				<ListBox ItemsSource="{Binding Tabs}"
+							  Grid.Row="1"
+							Background="Transparent"
+						 BorderThickness="0"
+						 Padding="0"
+							SelectedItem="{Binding CurrentTab, Mode=TwoWay}"
+							  Margin="0 5 0 12">
+					<ListBox.ItemsPanel>
+						<ItemsPanelTemplate>
+							<StackPanel Orientation="Horizontal" />
+						</ItemsPanelTemplate>
+					</ListBox.ItemsPanel>
+					<ListBox.ItemTemplate>
+						<DataTemplate>
+							<TextBlock Text="{Binding Title}"
+									   FontSize="22"
+									   Margin="0 0 22 0"/>
+						</DataTemplate>
+					</ListBox.ItemTemplate>
+					<ListBox.Resources>
+						<Style TargetType="ListBoxItem">
+							<Setter Property="Padding" Value="0"/>
+							<Setter Property="Margin" Value="0"/>
+							<Style.Triggers>
+								<Trigger Property="IsSelected" Value="True">
+									<Setter Property="Foreground" Value="#5A97F2" />
+								</Trigger>
+								<Trigger Property="IsSelected" Value="False">
+									<Setter Property="Foreground" Value="#999" />
+								</Trigger>
+								<MultiTrigger>
+									<MultiTrigger.Conditions>
+										<Condition Property="IsMouseOver" Value="True" />
+										<Condition Property="IsSelected" Value="False" />
+									</MultiTrigger.Conditions>
+									<Setter Property="Foreground" Value="#CCC" />
+								</MultiTrigger>
+							</Style.Triggers>
+							<Style.Resources>
+								<SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
+							 Color="Transparent"/>
+								<SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}"
+													 Color="Transparent" />								
+							</Style.Resources>
+						</Style>
+					</ListBox.Resources>						
+					
+				</ListBox>
+
+				<Grid Grid.Row="2"
+					  Visibility="{Binding IsServerListSelected, Converter={StaticResource BooleanToVisibilityCollapsedConverter}}">
+					<ServerList:ServerListView
+					DataContext="{Binding ServerListViewModel}"
+					/>
+				</Grid>
+				
+				
+				
+				
+
+				
+
+			</Grid>
+
+		</Grid>
+
+	</Border>
+</Window>

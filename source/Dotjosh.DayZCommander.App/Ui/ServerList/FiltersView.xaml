@@ -1,0 +1,205 @@
+﻿<UserControl x:Class="Dotjosh.DayZCommander.App.Ui.ServerList.FiltersView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+		<StackPanel>
+			
+			<TextBlock Text="Filter"
+						   Foreground="#EEE" 
+					   Margin="0 6 0 0"
+						   HorizontalAlignment="Left"
+						   FontSize="12" />
+			<TextBox Text="{Binding Filter.Name, Mode=TwoWay}"
+						   x:Name="NameEntry"
+					 KeyUp="Name_KeyUp"
+					 Background="#555"
+					 Foreground="#EEE"					 
+					 BorderBrush="#888"
+					 BorderThickness="1"
+					 Padding="4 2"
+						   Width="100"
+							Margin="0 3 0 0"
+						   HorizontalAlignment="Left"
+						   FontSize="12" />
+
+
+			<TextBlock Text="{Binding Filter.MaxPing,  StringFormat={}Max ping: {0}}"
+						   Foreground="{Binding Filter.MaxPing, Converter={StaticResource PingToForegroundConverter}}" 
+						   Width="100"
+					   Margin="0 20 0 0"
+						   HorizontalAlignment="Left"
+						   FontSize="12" />
+			<Slider Width="100" Height="8" 
+					Margin="0 4 0 0"
+						HorizontalAlignment="Left"
+						Value="{Binding Filter.MaxPing, Mode=TwoWay}"
+						Background="{Binding Filter.MaxPing, Converter={StaticResource PingToForegroundConverter}}" 
+						IsSnapToTickEnabled="True" TickFrequency="50" Minimum="0" Maximum="500" />
+			<CheckBox Content="Hide Unresponsive"
+					  IsChecked="{Binding Filter.HideUnresponsive, Mode=TwoWay}"
+					  Foreground="#EEEEEE"
+					  Margin="0 10 0 0"/>			
+			
+			<CheckBox Content="Hide Full"
+					  IsChecked="{Binding Filter.HideFull, Mode=TwoWay}"
+					  Foreground="#EEEEEE"
+					  Margin="0 10 0 0"/>
+			<CheckBox Content="Hide Empty"
+					  IsChecked="{Binding Filter.HideEmpty, Mode=TwoWay}"
+					  Foreground="#EEEEEE"
+					  Margin="0 10 0 0"/>
+			<CheckBox Content="Hide Locked"
+					  IsChecked="{Binding Filter.HidePasswordProtected, Mode=TwoWay}"
+					  Foreground="#EEEEEE"
+					  Margin="0 10 0 0"/>			
+			<CheckBox Content="Hide Wrong Arma2 Version"
+					  IsChecked="{Binding Filter.HideWrongArma2Version, Mode=TwoWay}"
+					  Foreground="#EEEEEE"
+					  Margin="0 10 0 0"/>			
+			<CheckBox Content="Hide Wrong DayZ Version"
+					  IsChecked="{Binding Filter.HideWrongDayZVersion, Mode=TwoWay}"
+					  Foreground="#EEEEEE"
+					  Margin="0 10 0 0"/>			
+
+			<ComboBox Margin="0 20 0 0" 
+					  Width="120"
+					  HorizontalAlignment="Left"
+					  SelectedItem="{Binding Filter.TimeOfDay, Mode=TwoWay}"
+					  ItemsSource="{Binding Filter.TimeOfDayOptions}">
+			</ComboBox>
+
+			<CheckBox
+					  IsChecked="{Binding Filter.HasArmor, Mode=TwoWay}"
+					  IsThreeState="True"
+					Style="{StaticResource FilterCheckBox}"
+					  Margin="0 10 0 0">
+				<CheckBox.Content>
+					<StackPanel Orientation="Horizontal">
+						<Path Data="F1M92.3135,168.9302C92.3135,168.9302,86.0455,180.2662,78.7445,182.1002L78.7265,162.6912 92.3435,162.6912z M77.2175,163.0122L63.3015,163.0122 63.3015,146.8562 77.2175,146.8562z M61.5755,145.0392L61.5915,168.6902C61.5915,168.6902 63.1525,178.6872 76.2245,185.7402 79.6935,187.6102 92.3565,174.2812 93.8995,169.1172L93.8995,145.0392z" 
+									Stretch="Uniform" 
+									Fill="#EEEEEE"
+									Width="12" 
+								Margin="0 0 0 3"
+									VerticalAlignment="Bottom"
+									Height="12" />
+						<TextBlock Text="Armor"
+								   Margin="4 0 0 2"
+								   Foreground="#EEEEEE"/>
+					</StackPanel>
+				</CheckBox.Content>
+			</CheckBox>
+			
+			<CheckBox
+					  IsChecked="{Binding Filter.HasThirdPerson, Mode=TwoWay}"
+					  IsThreeState="True"
+				Style="{StaticResource FilterCheckBox}"
+					  Margin="0 6 0 0">
+				<CheckBox.Content>
+					<StackPanel Orientation="Horizontal">
+						<Path Data="M21.4024,6.1134893C22.382831,6.1448646 24.770421,7.6760068 25.175942,8.0839891 25.600444,8.5045929 27.779454,14.903667 28.060155,15.11387 28.342656,15.324871 34.806884,17.785992 34.806884,17.785992 34.806884,17.785992 35.722289,18.698599 35.438388,19.892709 35.159085,21.089319 33.189679,20.806817 33.189679,20.806817 33.189679,20.806817 26.163646,18.347196 25.600444,17.925894 25.038642,17.50329 24.474738,16.589281 24.474738,16.589281L21.873228,23.058137C21.873228,23.058137 26.446149,28.749484 26.653848,29.592692 26.86415,30.436999 27.499553,40.767888 27.499553,40.767888 27.499553,40.767888 27.285352,42.667001 25.250842,42.667001 23.208533,42.667001 23.071134,40.487882 23.071134,40.487882 23.071134,40.487882 22.226729,31.562209 22.155129,31.001603 22.084128,30.436999 18.569813,26.922669 18.569813,26.922669L12.035985,41.26069C12.035984,41.26069 10.771579,42.877305 9.0821311,42.176797 7.394624,41.472291 7.9577965,39.434575 7.9577968,39.434575L15.547699,22.42133C15.547699,22.42133 14.776896,21.298922 14.706596,20.877119 14.635595,20.457914 14.565196,19.610808 14.565196,18.979302 14.565196,18.347196 16.673405,11.810542 16.673405,11.810542L14.209095,12.171244 9.2996023,18.698599C9.299602,18.698599,9.2708189,18.729515,9.2181916,18.77945L9.2084062,18.788596 9.3047872,18.860711C9.9321997,19.380239,10.224094,20.243466,9.9779472,21.074464L8.8282228,28.010638C8.4975371,29.117534,7.5405201,29.432532,6.4331146,29.100635L1.3934422,27.32194C0.28927279,26.992541,-0.23281527,25.933946,0.098601341,24.82775L2.7970541,18.930072C3.1284695,17.821976,4.2950737,17.195678,5.3992485,17.524477L6.3020139,17.793332 6.3131936,17.687105C6.3304159,17.553678 6.3529992,17.470789 6.352999,17.470789 6.3529992,17.470789 10.97998,10.263728 11.611484,9.5605721 12.246185,8.8554859 20.39852,6.1860937 21.312026,6.1152231 21.340611,6.113026 21.370773,6.1124774 21.4024,6.1134893z M25.9173,0C27.72379,0 29.184001,1.4629364 29.184001,3.2701697 29.184001,5.0747232 27.72379,6.5389998 25.9173,6.5389999 24.11011,6.5389998 22.648,5.0747232 22.648,3.2701697 22.648,1.4629364 24.11011,0 25.9173,0z" 
+									Stretch="Uniform" 
+									Fill="#EEEEEE"
+									Width="12" 
+								Margin="0 0 0 3"
+									VerticalAlignment="Bottom"
+									Height="12" />
+						<TextBlock Text="Third Person"
+								   Margin="4 0 0 2"
+								   Foreground="#EEEEEE"/>
+					</StackPanel>
+				</CheckBox.Content>
+			</CheckBox>		
+			
+			<CheckBox
+					  IsChecked="{Binding Filter.HasTracers, Mode=TwoWay}"
+					  IsThreeState="True"
+				Style="{StaticResource FilterCheckBox}"
+					  Margin="0 6 0 0">
+				<CheckBox.Content>
+					<StackPanel Orientation="Horizontal">
+						<Path Data="M61.3577,14.4764C61.2181,14.0168,60.8086,13.677,60.304,13.677L7.28613,13.677C6.83594,13.677 6.45734,13.8567 6.25812,14.1926 2.52667,20.9491 8.24963,24.3893 9.31213,29.457 7.61945,37.2655 0.976868,40.121 1.17151,49.8125 6.25745,50.8319 10.9869,52.2096 17.4547,51.8502 20.2923,46.5442 21.236,39.3463 25.5967,35.5651 30.2526,35.9987 34.2259,37.1145 39.8453,36.5833 43.2067,34.8567 41.6058,28.1666 44.9349,26.4036 50.0218,26.4036 55.1123,26.4036 60.2008,26.4036 60.3717,21.8295 63.5615,18.7825 61.3577,14.4764z M38.3746,34.6172C34.2711,35.3202 28.8802,34.3242 27.0719,32.5494 27.0996,32.4491 27.1338,32.3489 27.1338,32.2395L27.1338,28.7487C28.068,27.6705 30.2721,32.6185 32.0201,32.5 34.4805,31.7526 29.3096,27.5311 32.0201,26.1445 34.1387,26.1445 36.2568,26.1445 38.3746,26.1445 39.9319,27.6862 39.9339,33.0768 38.3746,34.6172z" 
+									Stretch="Uniform" 
+									Fill="#EEEEEE"
+									Width="12" 
+								Margin="0 0 0 3"
+									VerticalAlignment="Center"
+									Height="12" />
+						<TextBlock Text="Tracers"
+								   Margin="4 0 0 2"
+								   Foreground="#EEEEEE"/>
+					</StackPanel>
+				</CheckBox.Content>
+			</CheckBox>
+
+		
+			<CheckBox
+					  IsChecked="{Binding Filter.HasNameplates, Mode=TwoWay}"
+					  IsThreeState="True"
+				Style="{StaticResource FilterCheckBox}"
+					  Margin="0 6 0 0">
+				<CheckBox.Content>
+					<StackPanel Orientation="Horizontal">
+						<TextBlock Text="N"
+									Foreground="#EEEEEE"
+									Width="12" 
+								   FontSize="14"
+								Margin="0 0 0 3"
+									VerticalAlignment="Center"
+									Height="18" />
+						<TextBlock Text="Nameplates"
+								   Margin="4 0 0 0"
+								   Foreground="#EEEEEE"/>
+					</StackPanel>
+				</CheckBox.Content>
+			</CheckBox>	
+			
+			<CheckBox
+					  IsChecked="{Binding Filter.HasCrosshairs, Mode=TwoWay}"
+					  IsThreeState="True"
+				Style="{StaticResource FilterCheckBox}"
+					  Margin="0 6 0 0">
+				<CheckBox.Content>
+					<StackPanel Orientation="Horizontal">
+						<TextBlock Text="+"
+									Foreground="#EEEEEE"
+									Width="12" 
+								   FontSize="14"
+								Margin="0 0 0 3"
+									VerticalAlignment="Bottom"
+									Height="18" />
+						<TextBlock Text="Crosshairs"
+								   Margin="4 0 0 0"
+								   Foreground="#EEEEEE"/>
+					</StackPanel>
+				</CheckBox.Content>
+			</CheckBox>
+			
+			<CheckBox
+					  IsChecked="{Binding Filter.HasDeathMessages, Mode=TwoWay}"
+					  IsThreeState="True"
+				Style="{StaticResource FilterCheckBox}"
+					  Margin="0 6 0 0">
+				<CheckBox.Content>
+					<StackPanel Orientation="Horizontal">
+						<Path Data="M32.341598,1.4469999C40.868511,1.4469998 47.778999,2.2085577 47.778999,3.1484397 47.778999,4.0884322 40.868511,4.85 32.341598,4.85 23.81489,4.85 16.902,4.0884322 16.902,3.1484397 16.902,2.2085577 23.81489,1.4469998 32.341598,1.4469999z M3.8173161,0.12199983C5.4077842,10.2902 24.027158,22.251381 24.027158,22.251381 25.991382,37.749239 18.923597,35.148779 18.923597,35.148779 15.617556,37.076025 12.814824,33.690546 12.814824,33.690546 8.0601671,35.894899 6.4331863,30.134462 6.4331868,30.134462 1.616419,30.001562 2.5126095,22.293079 2.51261,22.293079 -3.0870678,20.089829 2.4214184,12.537653 2.4214184,12.537653 -2.6001239,9.7837287 3.8173156,0.12199982 3.8173161,0.12199983z M58.964012,0C58.964012,-1.7881393E-07 65.380951,9.6627541 60.359199,12.41659 60.359199,12.41659 65.86895,19.967323 60.267399,22.173004 60.267399,22.173004 61.163891,29.879936 56.348133,30.014134 56.348133,30.014134 54.72155,35.771883 49.966392,33.570002 49.966392,33.570002 47.164318,36.954172 43.859047,35.028391 43.859047,35.028391 36.790409,37.627367 38.754894,22.130005 38.754894,22.130005 57.373523,10.16791 58.964012,0z" 
+									Stretch="Uniform" 
+									Fill="#EEEEEE"
+									Width="12" 
+								Margin="0 0 0 5"
+									VerticalAlignment="Bottom"
+									Height="12" />
+						<TextBlock Text="DeathMessages"
+								   Margin="4 0 0 2"
+								   Foreground="#EEEEEE"/>
+					</StackPanel>
+				</CheckBox.Content>
+			</CheckBox>
+			
+
+		</StackPanel>
+	</Grid>
+</UserControl>

@@ -1,0 +1,255 @@
+﻿<UserControl x:Class="Dotjosh.DayZCommander.App.Ui.Controls.ServerListGrid"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:Controls="clr-namespace:Dotjosh.DayZCommander.App.Ui.Controls" mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+		<DataGrid ItemsSource="{Binding}"
+				  Margin="0 0 0 0"
+				  Grid.Row="1"
+				  x:Name="TheGrid"
+				  HorizontalGridLinesBrush="#333"
+          VerticalGridLinesBrush="#333"
+				  HorizontalAlignment="Stretch"
+				  VerticalAlignment="Stretch"
+					  VerticalScrollBarVisibility="disabled"
+						HorizontalScrollBarVisibility="Disabled"
+					  Background="Transparent"
+					 HeadersVisibility="Column"
+					  Foreground="#DDD"
+					  BorderThickness="0"
+				  SelectionMode="Single"
+				  SelectionUnit="FullRow"
+					ColumnHeaderStyle="{StaticResource MetroDataGridHeader}"						  
+					  AutoGenerateColumns="False">
+			<DataGrid.RowStyle>
+				<Style TargetType="{x:Type DataGridRow}">
+					<EventSetter Event="MouseDoubleClick" Handler="RowDoubleClick"/>
+                    <EventSetter Event="KeyDown" Handler="RowKeyDown"/>
+                    <EventSetter Event="KeyUp" Handler="RowKeyUp"/>
+					<EventSetter Event="PreviewMouseLeftButtonDown" Handler="RowLeftButtonDown"/>
+					<Style.Triggers>
+						<Trigger Property="IsMouseOver" Value="False">
+							<Setter Property="Background"
+									Value="Transparent"/>
+						</Trigger>
+						<Trigger Property="IsMouseOver"
+                           Value="True">
+							<Setter Property="Foreground"
+                               Value="#FFF" />
+							<Setter Property="Background"
+									Value="#4A4A4A"/>
+						</Trigger>
+					</Style.Triggers>
+					<Style.Resources>
+						<SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="#9CBFF2" />
+						<SolidColorBrush x:Key="{x:Static SystemColors.ControlTextBrushKey}" Color="#9CBFF2" />
+						<SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}">#555555</SolidColorBrush>
+					</Style.Resources>
+				</Style>
+			</DataGrid.RowStyle>
+			<DataGrid.CellStyle>
+				<Style TargetType="DataGridCell">
+					<Setter Property="BorderThickness" Value="0"/>
+					<Setter Property="BorderBrush" Value="#333"/>
+					<Setter Property="Margin" Value="0"/>
+					
+					<Setter Property="Padding" Value="2 2 8 2"/>
+					<Setter Property="Template">
+						<Setter.Value>
+							<ControlTemplate TargetType="{x:Type DataGridCell}">
+								<Border Padding="{TemplateBinding Padding}" 
+										BorderBrush="{TemplateBinding BorderBrush}" 
+										BorderThickness="{TemplateBinding BorderThickness}" 
+										Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+									<ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+								</Border>
+							</ControlTemplate>
+						</Setter.Value>
+					</Setter>
+				</Style>
+			</DataGrid.CellStyle>
+			<DataGrid.Resources>
+				<SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" 
+                   Color="#666666"/>
+				<SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}">#555555</SolidColorBrush>
+			</DataGrid.Resources>
+			<DataGrid.Columns>
+                <!--
+				<DataGridTemplateColumn
+											
+											SortMemberPath="IsFavorite"
+							 				Width="30" >
+                   
+					<DataGridTemplateColumn.HeaderStyle>
+						<Style TargetType="DataGridColumnHeader">
+							<Setter Property="Foreground" Value="Yellow"/>
+							<Setter Property="Template">
+								<Setter.Value>
+									<ControlTemplate TargetType="{x:Type DataGridColumnHeader}">
+
+											<Path Data="F1M29.7109,8.46094C30.97,5.91272,33.0299,5.91272,34.2864,8.46094L38.7291,17.457C39.9869,20.0052,43.319,22.4244,46.1302,22.8359L56.0612,24.2799C58.8724,24.6862,59.5104,26.6459,57.4727,28.6289L50.2891,35.6354C48.2526,37.6172,46.9805,41.5338,47.4622,44.3373L49.1588,54.224C49.638,57.0267,47.9713,58.2357,45.4557,56.9127L36.5755,52.2448C34.0586,50.9219,29.9401,50.9219,27.4232,52.2448L18.5455,56.9127C16.0273,58.2357,14.3607,57.0267,14.8411,54.224L16.5377,44.3373C17.0195,41.5338,15.7474,37.6172,13.7109,35.6354L6.526,28.6289C4.48956,26.6459,5.125,24.6862,7.93878,24.2799L17.8672,22.8359C20.681,22.4244,24.013,20.0052,25.2721,17.457L29.7109,8.46094z" 
+											  Stretch="Uniform" 
+											  Fill="Yellow" 
+												  Opacity=".5"
+												  HorizontalAlignment="Left"
+												  Margin="4 3 4 3"
+											  Width="16" 
+											  Height="16" />
+
+									</ControlTemplate>
+								</Setter.Value>
+							</Setter>
+						</Style>
+					</DataGridTemplateColumn.HeaderStyle>
+                
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<Controls:FavoriteControl/>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+                -->
+				<DataGridTemplateColumn
+											HeaderStyle="{StaticResource MetroDataGridHeader}"
+											Header="NAME"	
+											SortMemberPath="Name"
+											Width="*" >
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<TextBlock Text="{Binding Name}"
+									   Margin="4 0 0 0"
+									    Foreground="{Binding IsSameArmaAndDayZVersion, Converter={StaticResource VersionMatchesToForegroundConverter}}"
+										   VerticalAlignment="Center"/>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+                
+                <!--
+				<DataGridTemplateColumn
+											HeaderStyle="{StaticResource MetroDataGridHeaderRight}"
+											Header="VERSION"	
+											SortMemberPath="DayZVersion"
+											Width="100" >
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<Controls:VersionControl/>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+                -->
+				<DataGridTemplateColumn 
+											HeaderStyle="{StaticResource MetroDataGridHeaderCenter}"
+											Header="1ST/3RD"	
+											SortMemberPath="Difficulty"
+											Width="80" >
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<Controls:ServerSettingsControl />
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+
+				<DataGridTemplateColumn Width="80" 
+												Header="DAY/NIGHT" 
+												SortMemberPath="ServerTime" 
+												HeaderStyle="{StaticResource MetroDataGridHeaderRight}">
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<Controls:TimeControl/>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+				<DataGridTemplateColumn Width="66" Header="PLAYERS" SortMemberPath="CurrentPlayers" HeaderStyle="{StaticResource MetroDataGridHeaderRight}">
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<Controls:PlayersControl/>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+				<DataGridTemplateColumn Width="57" Header="PING" SortMemberPath="Ping" HeaderStyle="{StaticResource MetroDataGridHeaderRight}">
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<Controls:PingControl/>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+                <!--
+					<DataGridTemplateColumn
+											
+											SortMemberPath="HasNotes"
+											Width="30" >
+						<DataGridTemplateColumn.HeaderStyle>
+							<Style TargetType="DataGridColumnHeader"
+								   BasedOn="{StaticResource MetroDataGridHeader}">
+								<Setter Property="Template">
+									<Setter.Value>
+										<ControlTemplate TargetType="{x:Type DataGridColumnHeader}">
+
+
+										<Border Background="Transparent" IsHitTestVisible="True">
+											<Path Data="M11.740041,48.649962L36.519042,48.649962 36.519042,52.234965 11.740041,52.234965z M11.740041,39.699961L28.159041,39.699961 28.159041,43.283965 11.740041,43.283965z M27.859714,18.289943L35.80807,25.267535 26.04009,27.066914z M19.293321,6.0298446L35.156226,6.0298446 30.695357,10.809545 21.493783,10.809545 21.493783,21.308824C21.493783,21.308824,21.293674,28.208252,13.682346,27.608439L4.7708612,27.648232 4.7708612,56.696284C4.7708621,57.356394,5.310874,57.886389,5.9710255,57.886389L39.406978,57.886389C40.067004,57.886389,40.607139,57.356394,40.607139,56.696284L40.607139,23.158551 45.378001,18.339057 45.378001,56.696284C45.378001,59.996108,42.707484,62.665846,39.406978,62.665846L5.9710255,62.665846C2.6703937,62.665846,8.2057886E-07,59.996108,0,56.696284L0,26.388552 4.3307204,21.818799 4.3407316,21.788771 14.882631,10.629626 14.942578,10.629626z M39.802798,4.9000801L47.894992,12.461267 37.782249,23.272963 37.622207,21.552693 34.95148,20.622548 34.891463,18.79226 32.22074,18.072147 31.910655,16.011824 29.700055,15.711776z M45.427306,0.0017399788C45.787978,0.017679691,46.122802,0.14331722,46.381656,0.38709164L52.113975,5.7476325C52.804252,6.3976984,52.704211,7.6278225,51.893886,8.5079112L50.773433,9.6980317 42.530101,1.9872532 43.640548,0.79713345C44.153255,0.25332832,44.826182,-0.024824619,45.427306,0.0017399788z" 
+							  Stretch="Uniform" 
+							  HorizontalAlignment="Center"
+							  VerticalAlignment="Center"
+							  Fill="{TemplateBinding Foreground}"
+							  Width="16" 
+							  Height="16"  />
+											</Border>
+										</ControlTemplate>
+									</Setter.Value>
+								</Setter>
+							</Style>
+						</DataGridTemplateColumn.HeaderStyle>
+						<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<Controls:NotesControl Margin="4 0 0 0"/>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+                -->
+				<DataGridTemplateColumn Width="32">
+					<DataGridTemplateColumn.HeaderStyle>
+						<Style TargetType="DataGridColumnHeader">
+							<Setter Property="Template">
+								<Setter.Value>
+									<ControlTemplate TargetType="{x:Type DataGridColumnHeader}">
+										<Button
+							HorizontalAlignment="Center"
+							Click="RefreshAllServer"
+							MouseDoubleClick="RefreshAllServersDoubleClick"
+							Background="Transparent"
+							Style="{StaticResource MetroTextButtonStyle}">
+											<Button.Template>
+												<ControlTemplate>
+													<Border IsHitTestVisible="True"
+										x:Name="Refresh"
+															HorizontalAlignment="Center"
+											Background="{TemplateBinding Background}">
+														<Path Data="F1M2278.07,1272.94C2265.47,1272.94,2254.91,1281.77,2252.19,1293.55L2241.99,1293.43 2255.8,1315.74 2270.14,1293.77 2260.66,1293.66C2263.13,1286.36 2269.96,1281.07 2278.07,1281.07 2288.24,1281.07 2296.52,1289.35 2296.52,1299.52 2296.52,1309.7 2288.24,1317.98 2278.07,1317.98 2274.31,1317.98 2270.81,1316.84 2267.89,1314.9L2263.45,1321.7C2267.65,1324.48 2272.67,1326.11 2278.07,1326.11 2292.73,1326.11 2304.65,1314.18 2304.65,1299.52 2304.65,1284.87 2292.73,1272.94 2278.07,1272.94" 
+											Stretch="Uniform" 
+											Fill="{TemplateBinding Foreground}" 
+											Width="14" Height="14" Margin="0,3,10,0" />
+													</Border>
+												</ControlTemplate>
+											</Button.Template>
+										</Button>
+
+									</ControlTemplate>
+								</Setter.Value>
+							</Setter>
+						</Style>
+					</DataGridTemplateColumn.HeaderStyle>
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<Controls:RefreshServerControl/>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+			</DataGrid.Columns>
+		</DataGrid>
+
+	</Grid>
+</UserControl>

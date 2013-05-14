@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="Dotjosh.DayZCommander.App.Ui.Controls.VersionControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid HorizontalAlignment="Right">
+		<StackPanel HorizontalAlignment="Right">
+			<StackPanel Orientation="Horizontal"
+											HorizontalAlignment="Right">
+				<TextBlock Text="{Binding Arma2Version, StringFormat='Arma: {0}'}"
+											   Foreground="{Binding IsSameArma2OAVersion, Converter={StaticResource VersionMatchesToForegroundConverter}}"
+											   FontSize="11"/>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal"
+											Margin="0 3 0 0"
+											HorizontalAlignment="Right">
+				<TextBlock Text="{Binding DayZVersion, StringFormat='DayZ: {0}'}"
+											  Foreground="{Binding IsSameDayZVersion, Converter={StaticResource VersionMatchesToForegroundConverter}}"
+											   FontSize="11"/>
+			</StackPanel>
+		</StackPanel>
+	</Grid>
+</UserControl>

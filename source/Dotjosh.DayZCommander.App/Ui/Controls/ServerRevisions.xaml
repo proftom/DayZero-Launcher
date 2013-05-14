@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="Dotjosh.DayZCommander.App.Ui.Controls.ServerRevisions"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+		<ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto"
+							  Width="160"
+							  HorizontalAlignment="Left"
+								  MaxHeight="80">
+			<ItemsControl ItemsSource="{Binding}"
+								  Margin="0 3 12 0">
+				<ItemsControl.ItemTemplate>
+					<DataTemplate>
+						<Grid Margin="0 5 0 0">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="70"/>
+								<ColumnDefinition/>
+							</Grid.ColumnDefinitions>
+
+							<Rectangle Fill="#555"
+											   Grid.ColumnSpan="2"
+											   VerticalAlignment="Stretch"
+											   HorizontalAlignment="Left"
+											   >
+								<Rectangle.Width>
+									<MultiBinding Converter="{StaticResource ServerRevisionCountToWidthConverter}">
+										<Binding Path="Count"/>
+										<Binding Path="Parent.ProcessedCount"/>
+									</MultiBinding>
+								</Rectangle.Width>
+							</Rectangle>
+							<TextBlock Text="{Binding Version}" Width="70" Foreground="#EEE" />
+							<TextBlock Foreground="#BBB" Grid.Column="1" >
+								<TextBlock.Text>
+									<MultiBinding Converter="{StaticResource CountsToPercentageConverter}">
+										<Binding Path="Count"/>
+										<Binding Path="Parent.ProcessedCount"/>
+									</MultiBinding>
+								</TextBlock.Text>
+							</TextBlock>
+						</Grid>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+			</ItemsControl>
+		</ScrollViewer>
+	</Grid>
+</UserControl>

@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="Dotjosh.DayZCommander.App.Ui.Controls.NotesControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+		
+		<Button Click="Note_Click">
+			<Button.Template>
+				<ControlTemplate>
+					<Border Background="Transparent" IsHitTestVisible="True"
+							ToolTip="{Binding Notes}"
+							ToolTipService.IsEnabled="{Binding HasNotes}"
+							ToolTipService.InitialShowDelay="0"
+							ToolTipService.ShowDuration="9999">
+						<Path Data="M11.740041,48.649962L36.519042,48.649962 36.519042,52.234965 11.740041,52.234965z M11.740041,39.699961L28.159041,39.699961 28.159041,43.283965 11.740041,43.283965z M27.859714,18.289943L35.80807,25.267535 26.04009,27.066914z M19.293321,6.0298446L35.156226,6.0298446 30.695357,10.809545 21.493783,10.809545 21.493783,21.308824C21.493783,21.308824,21.293674,28.208252,13.682346,27.608439L4.7708612,27.648232 4.7708612,56.696284C4.7708621,57.356394,5.310874,57.886389,5.9710255,57.886389L39.406978,57.886389C40.067004,57.886389,40.607139,57.356394,40.607139,56.696284L40.607139,23.158551 45.378001,18.339057 45.378001,56.696284C45.378001,59.996108,42.707484,62.665846,39.406978,62.665846L5.9710255,62.665846C2.6703937,62.665846,8.2057886E-07,59.996108,0,56.696284L0,26.388552 4.3307204,21.818799 4.3407316,21.788771 14.882631,10.629626 14.942578,10.629626z M39.802798,4.9000801L47.894992,12.461267 37.782249,23.272963 37.622207,21.552693 34.95148,20.622548 34.891463,18.79226 32.22074,18.072147 31.910655,16.011824 29.700055,15.711776z M45.427306,0.0017399788C45.787978,0.017679691,46.122802,0.14331722,46.381656,0.38709164L52.113975,5.7476325C52.804252,6.3976984,52.704211,7.6278225,51.893886,8.5079112L50.773433,9.6980317 42.530101,1.9872532 43.640548,0.79713345C44.153255,0.25332832,44.826182,-0.024824619,45.427306,0.0017399788z" 
+							  Stretch="Uniform" 
+							  HorizontalAlignment="Center"
+							  VerticalAlignment="Center"
+							  Fill="{Binding HasNotes, Converter={StaticResource HasNotesToForegroundConverter}}"
+							  Width="16" 
+							  Height="16"  />
+					</Border>
+				</ControlTemplate>
+			</Button.Template>
+		</Button>
+	</Grid>
+</UserControl>
