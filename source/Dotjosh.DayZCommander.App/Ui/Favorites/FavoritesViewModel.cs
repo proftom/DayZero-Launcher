@@ -3,10 +3,10 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Data;
 using Caliburn.Micro;
-using Dotjosh.DayZCommander.App.Core;
-using Dotjosh.DayZCommander.App.Ui.Friends;
+using zombiesnu.DayZeroLauncher.App.Core;
+using zombiesnu.DayZeroLauncher.App.Ui.Friends;
 
-namespace Dotjosh.DayZCommander.App.Ui.Favorites
+namespace zombiesnu.DayZeroLauncher.App.Ui.Favorites
 {
 	public class FavoritesViewModel : ViewModelBase, 
 		IHandle<FavoritesUpdated>,
@@ -21,12 +21,13 @@ namespace Dotjosh.DayZCommander.App.Ui.Favorites
 			Servers = (ListCollectionView) CollectionViewSource.GetDefaultView(_rawServers);
 			Servers.SortDescriptions.Add(new SortDescription("Name", ListSortDirection.Ascending));
 
-			foreach(var favorite in UserSettings.Current.Favorites)
+		/*	foreach(var favorite in UserSettings.Current.Favorites)
 			{
 				var server = favorite.CreateServer();
 //				server.BeginUpdate(s => { });
 				App.Events.Publish(new FavoritesUpdated(server));
 			}
+         */
 		}
 
 		public ListCollectionView Servers { get; private set; }

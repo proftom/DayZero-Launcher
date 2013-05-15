@@ -2,9 +2,9 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
 using Caliburn.Micro;
-using Dotjosh.DayZCommander.App.Core;
+using zombiesnu.DayZeroLauncher.App.Core;
 
-namespace Dotjosh.DayZCommander.App.Ui.Friends
+namespace zombiesnu.DayZeroLauncher.App.Ui.Friends
 {
 	public class ManageViewModel : ViewModelBase,
 	                                    IHandle<PlayersChangedEvent>

@@ -1,6 +1,6 @@
 using System.Runtime.Serialization;
 
-namespace Dotjosh.DayZCommander.App.Core
+namespace zombiesnu.DayZeroLauncher.App.Core
 {
 	[DataContract]
 	public class GameOptions : BindableBase

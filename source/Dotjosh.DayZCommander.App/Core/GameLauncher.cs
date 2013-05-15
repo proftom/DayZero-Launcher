@@ -6,7 +6,7 @@ using System.Windows;
 using NLog;
 using System.Threading;
 
-namespace Dotjosh.DayZCommander.App.Core
+namespace zombiesnu.DayZeroLauncher.App.Core
 {
 	public static class GameLauncher
 	{
@@ -69,6 +69,7 @@ namespace Dotjosh.DayZCommander.App.Core
 			arguments.Append(" -noSplash -noFilePatching");
 			arguments.Append(" -connect=" + server.IpAddress);
 			arguments.Append(" -port=" + server.Port);
+            arguments.Append(" -password=" + server.password);
 			arguments.AppendFormat(" \"-mod={0};expansion;expansion\\beta;expansion\\beta\\expansion;{1}\"", CalculatedGameSettings.Current.Arma2Path, CalculatedGameSettings.Current.DayZPath);
 
 			try
@@ -85,7 +86,7 @@ namespace Dotjosh.DayZCommander.App.Core
 			        		};
 				p.Start();
 
-				UserSettings.Current.AddRecent(server);
+				//UserSettings.Current.AddRecent(server);
 
                 if(UserSettings.Current.GameOptions.CloseDayZCommander){
                     Thread.Sleep(1000);

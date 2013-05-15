@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Dotjosh.DayZCommander.App.Ui.Controls
+namespace zombiesnu.DayZeroLauncher.App.Ui.Controls
 {
 	/// <summary>
 	/// Interaction logic for ServerStandaloneRow.xaml

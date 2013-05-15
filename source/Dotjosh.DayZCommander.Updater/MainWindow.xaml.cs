@@ -4,10 +4,10 @@ using System.IO;
 using System.Reflection;
 using System.Threading;
 using System.Windows;
-using Dotjosh.DayZCommander.InstallUtilities;
+using zombiesnu.DayZeroLauncher.InstallUtilities;
 using NLog;
 
-namespace Dotjosh.DayZCommander.Updater
+namespace zombiesnu.DayZeroLauncher.Updater
 {
 	/// <summary>
 	/// 	Interaction logic for MainWindow.xaml

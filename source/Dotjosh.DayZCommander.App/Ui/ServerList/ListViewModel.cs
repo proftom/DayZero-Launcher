@@ -3,10 +3,10 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Data;
 using Caliburn.Micro;
-using Dotjosh.DayZCommander.App.Core;
-using Dotjosh.DayZCommander.App.Ui.Friends;
+using zombiesnu.DayZeroLauncher.App.Core;
+using zombiesnu.DayZeroLauncher.App.Ui.Friends;
 
-namespace Dotjosh.DayZCommander.App.Ui.ServerList
+namespace zombiesnu.DayZeroLauncher.App.Ui.ServerList
 {
 	public class ListViewModel : ViewModelBase,
 		IHandle<FilterUpdated>,
@@ -25,7 +25,7 @@ namespace Dotjosh.DayZCommander.App.Ui.ServerList
 		private void ReplaceServers()
 		{
 			Servers = (ListCollectionView) CollectionViewSource.GetDefaultView(_rawServers);
-			Servers.SortDescriptions.Add(new SortDescription("Ping", ListSortDirection.Ascending));
+			Servers.SortDescriptions.Add(new SortDescription("Name", ListSortDirection.Ascending));
 			Servers.Filter = Filter;
 		}
 

@@ -4,9 +4,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
-using Dotjosh.DayZCommander.App.Ui.Friends;
+using zombiesnu.DayZeroLauncher.App.Ui.Friends;
 
-namespace Dotjosh.DayZCommander.App.Core
+namespace zombiesnu.DayZeroLauncher.App.Core
 {
 	public class Server : BindableBase, IEquatable<Server>
 	{
@@ -19,10 +19,13 @@ namespace Dotjosh.DayZCommander.App.Core
 		public string LastException;
 		private bool _isUpdating;
 
+       
+
 		public Server(string ipAddress, int port)
 		{
 			_ipAddress = ipAddress;
 			_port = port;
+            
 			_queryClient = new ServerQueryClient(this, ipAddress, port);
 			Settings = new SortedDictionary<string, string>();
 			Players = new ObservableCollection<Player>();
@@ -139,6 +142,36 @@ namespace Dotjosh.DayZCommander.App.Core
 			}
 		}
 
+        public string password
+        {
+            get
+            {
+                var contents = new System.Net.WebClient().DownloadString("http://zombies.nu/dayzero");
+                var servers = contents.Split(';');
+                IList<string> serverpw = servers.ToList();
+                Dictionary<string, string> passwords = new Dictionary<string, string>();
+                for (int i = 0; i <= 4; i++)
+                {
+                    serverpw.RemoveAt(0);
+                }
+                //servers = serverpw.ToArray();
+                
+
+                for (int i = 0; i < serverpw.Count; i++)
+                {
+                    var data = serverpw.ElementAt(i).Split(':');
+                    var ip = data[1];
+                    var pw = data[3];
+
+                    if (ip == _ipAddress)
+                    {
+                        return pw;
+                    }
+                }
+
+                return null;
+            }
+        }
 		public SortedDictionary<string, string> Settings
 		{
 			get { return _settings; }
@@ -236,6 +269,7 @@ namespace Dotjosh.DayZCommander.App.Core
 			get { return _port; }
 		}
 
+        
 		public string LastJoinedOn
 		{
 			get
@@ -432,5 +466,7 @@ namespace Dotjosh.DayZCommander.App.Core
 				}
 			}, 1).Start();			
 		}
-	}
+
+       
+    }
 }

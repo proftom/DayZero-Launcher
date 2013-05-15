@@ -1,4 +1,4 @@
-﻿namespace Dotjosh.DayZCommander.App.Ui.ServerList
+﻿namespace zombiesnu.DayZeroLauncher.App.Ui.ServerList
 {
 	public class ServerListViewModel : ViewModelBase
 	{

@@ -1,6 +1,6 @@
-﻿using Dotjosh.DayZCommander.App.Core;
+﻿using zombiesnu.DayZeroLauncher.App.Core;
 
-namespace Dotjosh.DayZCommander.App.Ui
+namespace zombiesnu.DayZeroLauncher.App.Ui
 {
 	public abstract class ViewModelBase : BindableBase
 	{

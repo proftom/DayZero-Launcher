@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Dotjosh.DayZCommander.App.Ui.Friends
+namespace zombiesnu.DayZeroLauncher.App.Ui.Friends
 {
 	/// <summary>
 	/// Interaction logic for FriendsView.xaml

@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media;
 
-namespace Dotjosh.DayZCommander.App.Ui.Converters
+namespace zombiesnu.DayZeroLauncher.App.Ui.Converters
 {
 	public class PingToForegroundConverter : IValueConverter
 	{

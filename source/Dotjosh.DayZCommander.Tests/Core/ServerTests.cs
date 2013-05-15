@@ -1,8 +1,8 @@
 ﻿using System;
-using Dotjosh.DayZCommander.App.Core;
+using zombiesnu.DayZeroLauncher.App.Core;
 using NUnit.Framework;
 
-namespace Dotjosh.DayZCommander.Tests.Core
+namespace zombiesnu.DayZeroLauncher.Tests.Core
 {
     [TestFixture]
     public class When_getting_server_time

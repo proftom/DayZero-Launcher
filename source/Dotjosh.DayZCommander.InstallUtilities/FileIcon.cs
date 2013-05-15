@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Runtime.InteropServices;
 
-namespace Dotjosh.DayZCommander.InstallUtilities
+namespace zombiesnu.DayZeroLauncher.InstallUtilities
 {
 	/// <summary>
 	/// 	Enables extraction of icons for any file type from

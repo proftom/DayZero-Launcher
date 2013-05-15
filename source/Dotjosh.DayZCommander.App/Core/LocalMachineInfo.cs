@@ -5,7 +5,7 @@ using Microsoft.Win32;
 using NLog;
 
 // ReSharper disable InconsistentNaming
-namespace Dotjosh.DayZCommander.App.Core
+namespace zombiesnu.DayZeroLauncher.App.Core
 {
 	public class LocalMachineInfo : BindableBase
 	{

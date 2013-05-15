@@ -1,7 +1,7 @@
 ﻿using System;
-using Dotjosh.DayZCommander.Updater;
+using zombiesnu.DayZeroLauncher.Updater;
 
-namespace Dotjosh.DayZCommander.App.Core
+namespace zombiesnu.DayZeroLauncher.App.Core
 {
 	public class DayZCommanderUpdater : BindableBase
 	{

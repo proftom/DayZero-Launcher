@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Dotjosh.DayZCommander.App.Ui.Friends
+namespace zombiesnu.DayZeroLauncher.App.Ui.Friends
 {
 	public class FriendsViewModel : ViewModelBase
 	{

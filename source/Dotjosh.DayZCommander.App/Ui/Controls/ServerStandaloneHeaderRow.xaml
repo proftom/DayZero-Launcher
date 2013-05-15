@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Dotjosh.DayZCommander.App.Ui.Controls.ServerStandaloneHeaderRow"
+﻿<UserControl x:Class="zombiesnu.DayZeroLauncher.App.Ui.Controls.ServerStandaloneHeaderRow"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 

@@ -7,7 +7,7 @@ using SharpCompress.Common;
 using SharpCompress.Reader;
 
 // ReSharper disable InconsistentNaming
-namespace Dotjosh.DayZCommander.App.Core
+namespace zombiesnu.DayZeroLauncher.App.Core
 {
 	public class GameUpdater
 	{

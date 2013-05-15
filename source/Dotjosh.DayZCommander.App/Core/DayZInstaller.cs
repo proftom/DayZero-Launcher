@@ -5,11 +5,11 @@ using System.IO;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading;
-using Dotjosh.DayZCommander.App.Ui;
+using zombiesnu.DayZeroLauncher.App.Ui;
 using SharpCompress.Common;
 using SharpCompress.Reader;
 
-namespace Dotjosh.DayZCommander.App.Core
+namespace zombiesnu.DayZeroLauncher.App.Core
 {
 	public class DayZInstaller : ViewModelBase
 	{

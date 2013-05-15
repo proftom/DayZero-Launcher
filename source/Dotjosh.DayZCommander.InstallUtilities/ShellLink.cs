@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Dotjosh.DayZCommander.InstallUtilities
+namespace zombiesnu.DayZeroLauncher.InstallUtilities
 {
 	/// <summary>
 	/// 	Summary description for ShellLink.
