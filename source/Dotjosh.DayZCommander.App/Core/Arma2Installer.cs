@@ -6,7 +6,7 @@ using System.Threading;
 using SharpCompress.Common;
 using SharpCompress.Reader;
 
-namespace Dotjosh.DayZCommander.App.Core
+namespace zombiesnu.DayZeroLauncher.App.Core
 {
 	public class Arma2Installer : BindableBase
 	{

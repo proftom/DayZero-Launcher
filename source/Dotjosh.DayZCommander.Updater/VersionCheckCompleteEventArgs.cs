@@ -1,6 +1,6 @@
 using System;
 
-namespace Dotjosh.DayZCommander.Updater
+namespace zombiesnu.DayZeroLauncher.Updater
 {
 	public class VersionCheckCompleteEventArgs : EventArgs
 	{

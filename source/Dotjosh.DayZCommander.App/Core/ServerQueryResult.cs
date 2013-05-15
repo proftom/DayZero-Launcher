@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Dotjosh.DayZCommander.App.Core
+namespace zombiesnu.DayZeroLauncher.App.Core
 {
 	public class ServerQueryResult
 	{

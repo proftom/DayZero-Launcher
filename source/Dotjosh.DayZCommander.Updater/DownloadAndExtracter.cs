@@ -10,7 +10,7 @@ using System.Windows.Threading;
 using Ionic.Zip;
 using NLog;
 
-namespace Dotjosh.DayZCommander.Updater
+namespace zombiesnu.DayZeroLauncher.Updater
 {
 	public class DownloadAndExtracter
 	{

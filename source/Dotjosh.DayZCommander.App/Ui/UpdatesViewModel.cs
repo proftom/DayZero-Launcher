@@ -5,18 +5,18 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Data;
 using Caliburn.Micro;
-using Dotjosh.DayZCommander.App.Core;
-using Dotjosh.DayZCommander.App.Ui.Friends;
+using zombiesnu.DayZeroLauncher.App.Core;
+using zombiesnu.DayZeroLauncher.App.Ui.Friends;
 
-namespace Dotjosh.DayZCommander.App.Ui
+namespace zombiesnu.DayZeroLauncher.App.Ui
 {
 	public class UpdatesViewModel : ViewModelBase, 
 		IHandle<ServerUpdated>
 	{
 		private bool _isVisible;
-		private string STATUS_INPROGRESS = "STATUS_INPROGRESS";
-		private string STATUS_ERROR = "STATUS_ERROR";
-		private string STATUS_DEFAULT = "STATUS_DEFAULT";
+		//private string STATUS_INPROGRESS = "STATUS_INPROGRESS";
+		//private string STATUS_ERROR = "STATUS_ERROR";
+		//private string STATUS_DEFAULT = "STATUS_DEFAULT";
 		private readonly Dictionary<Server, VersionSnapshot> _processedServers = new Dictionary<Server, VersionSnapshot>();
 		private ObservableCollection<VersionStatistic> _rawArma2VersionStats = new ObservableCollection<VersionStatistic>();
 		private ObservableCollection<VersionStatistic> _rawDayZVersionStats = new ObservableCollection<VersionStatistic>();

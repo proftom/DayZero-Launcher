@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Windows.Data;
 
-namespace Dotjosh.DayZCommander.App.Ui.Converters
+namespace zombiesnu.DayZeroLauncher.App.Ui.Converters
 {
 	public class CountsToPercentageConverter : IMultiValueConverter
 	{

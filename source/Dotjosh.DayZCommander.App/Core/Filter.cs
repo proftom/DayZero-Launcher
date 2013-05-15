@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Timers;
-using Dotjosh.DayZCommander.App.Ui.ServerList;
+using zombiesnu.DayZeroLauncher.App.Ui.ServerList;
 
-namespace Dotjosh.DayZCommander.App.Core
+namespace zombiesnu.DayZeroLauncher.App.Core
 {
 	[DataContract]
 	public class Filter : BindableBase

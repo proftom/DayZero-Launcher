@@ -8,10 +8,10 @@ using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Xml.Linq;
-using Dotjosh.DayZCommander.App.Ui.Friends;
-using Dotjosh.DayZCommander.App.Ui.Recent;
+using zombiesnu.DayZeroLauncher.App.Ui.Friends;
+using zombiesnu.DayZeroLauncher.App.Ui.Recent;
 
-namespace Dotjosh.DayZCommander.App.Core
+namespace zombiesnu.DayZeroLauncher.App.Core
 {
 	[DataContract]
 	public class UserSettings

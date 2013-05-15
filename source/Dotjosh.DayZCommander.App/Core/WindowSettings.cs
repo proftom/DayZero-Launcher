@@ -1,8 +1,8 @@
 ﻿using System.Runtime.Serialization;
 using System.Windows;
-using Dotjosh.DayZCommander.App.Ui;
+using zombiesnu.DayZeroLauncher.App.Ui;
 
-namespace Dotjosh.DayZCommander.App.Core
+namespace zombiesnu.DayZeroLauncher.App.Core
 {
 	[DataContract]
 	public class WindowSettings

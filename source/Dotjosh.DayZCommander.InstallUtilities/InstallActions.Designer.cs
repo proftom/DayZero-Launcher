@@ -1,4 +1,4 @@
-﻿namespace Dotjosh.DayZCommander.InstallUtilities
+﻿namespace zombiesnu.DayZeroLauncher.InstallUtilities
 {
 	partial class InstallActions
 	{

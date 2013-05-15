@@ -1,7 +1,7 @@
 using System;
-using Dotjosh.DayZCommander.App.Core;
+using zombiesnu.DayZeroLauncher.App.Core;
 
-namespace Dotjosh.DayZCommander.App.Ui.ServerList
+namespace zombiesnu.DayZeroLauncher.App.Ui.ServerList
 {
 	public class FilterUpdated
 	{

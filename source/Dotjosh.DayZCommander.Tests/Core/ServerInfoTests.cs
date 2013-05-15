@@ -1,8 +1,8 @@
-﻿using Dotjosh.DayZCommander.App.Core;
+﻿using zombiesnu.DayZeroLauncher.App.Core;
 using NUnit.Framework;
 
 // ReSharper disable CheckNamespace
-namespace Dotjosh.DayZCommander.Tests.Core.ServerInfoTests
+namespace zombiesnu.DayZeroLauncher.Tests.Core.ServerInfoTests
 {
 	// ReSharper disable InconsistentNaming
 	[TestFixture]

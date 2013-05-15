@@ -7,10 +7,10 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using Caliburn.Micro;
-using Dotjosh.DayZCommander.App.Ui;
-using Dotjosh.DayZCommander.App.Ui.Controls;
+using zombiesnu.DayZeroLauncher.App.Ui;
+using zombiesnu.DayZeroLauncher.App.Ui.Controls;
 
-namespace Dotjosh.DayZCommander.App.Core
+namespace zombiesnu.DayZeroLauncher.App.Core
 {
 	public class ServerList : ViewModelBase,
 		IHandle<RefreshServerRequest>

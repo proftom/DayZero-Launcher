@@ -4,9 +4,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Data;
 using Caliburn.Micro;
-using Dotjosh.DayZCommander.App.Core;
+using zombiesnu.DayZeroLauncher.App.Core;
 
-namespace Dotjosh.DayZCommander.App.Ui.Friends
+namespace zombiesnu.DayZeroLauncher.App.Ui.Friends
 {
 	public class ListViewModel : ViewModelBase,
 		IHandle<FriendChanged>

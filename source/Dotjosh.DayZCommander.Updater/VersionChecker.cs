@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Net;
 using System.Reflection;
 
-namespace Dotjosh.DayZCommander.Updater
+namespace zombiesnu.DayZeroLauncher.Updater
 {
 	public class VersionChecker
 	{

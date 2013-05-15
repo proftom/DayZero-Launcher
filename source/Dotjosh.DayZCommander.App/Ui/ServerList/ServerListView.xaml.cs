@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace Dotjosh.DayZCommander.App.Ui.ServerList
+namespace zombiesnu.DayZeroLauncher.App.Ui.ServerList
 {
 	/// <summary>
 	/// Interaction logic for ServerListView.xaml

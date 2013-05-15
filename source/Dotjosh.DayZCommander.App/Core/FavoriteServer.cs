@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
-namespace Dotjosh.DayZCommander.App.Core
+namespace zombiesnu.DayZeroLauncher.App.Core
 {
 	[DataContract]
 	public class FavoriteServer
@@ -20,15 +20,17 @@ namespace Dotjosh.DayZCommander.App.Core
 		{
 			return server.IpAddress == _ipAddress && server.Port == _port;
 		}
-
+        /*
 		public Server CreateServer()
 		{
-			var server = new Server(_ipAddress, _port);
+			
+            var server = new Server(_ipAddress, _port);
 			server.Settings = new SortedDictionary<string, string>()
 			                  	{
 			                  		{"hostname",_name}
 			                  	};
 			return server;
 		}
+         */
 	}
 }

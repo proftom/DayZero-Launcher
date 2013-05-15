@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Configuration.Install;
 using System.IO;
 
-namespace Dotjosh.DayZCommander.InstallUtilities
+namespace zombiesnu.DayZeroLauncher.InstallUtilities
 {
 	[RunInstaller(true)]
 	public partial class InstallActions : Installer

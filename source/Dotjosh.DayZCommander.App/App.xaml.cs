@@ -6,11 +6,11 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Threading;
 using Caliburn.Micro;
-using Dotjosh.DayZCommander.App.Core;
-using Dotjosh.DayZCommander.Updater;
+using zombiesnu.DayZeroLauncher.App.Core;
+using zombiesnu.DayZeroLauncher.Updater;
 using NLog;
 
-namespace Dotjosh.DayZCommander.App
+namespace zombiesnu.DayZeroLauncher.App
 {
 	public partial class App : Application
 	{

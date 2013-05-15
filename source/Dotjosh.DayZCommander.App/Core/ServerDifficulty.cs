@@ -1,4 +1,4 @@
-﻿namespace Dotjosh.DayZCommander.App.Core
+﻿namespace zombiesnu.DayZeroLauncher.App.Core
 {
 	public enum ServerDifficulty
 	{

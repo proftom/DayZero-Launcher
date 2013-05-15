@@ -5,11 +5,11 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Data;
 using Caliburn.Micro;
-using Dotjosh.DayZCommander.App.Core;
-using Dotjosh.DayZCommander.App.Ui.Controls;
-using Dotjosh.DayZCommander.App.Ui.Friends;
+using zombiesnu.DayZeroLauncher.App.Core;
+using zombiesnu.DayZeroLauncher.App.Ui.Controls;
+using zombiesnu.DayZeroLauncher.App.Ui.Friends;
 
-namespace Dotjosh.DayZCommander.App.Ui
+namespace zombiesnu.DayZeroLauncher.App.Ui
 {
 	public class NotesViewModel : ViewModelBase, 
 		IHandle<RequestNoteEdit>

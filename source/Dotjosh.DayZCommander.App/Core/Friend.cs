@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using Dotjosh.DayZCommander.App.Ui;
-using Dotjosh.DayZCommander.App.Ui.Friends;
+using zombiesnu.DayZeroLauncher.App.Ui;
+using zombiesnu.DayZeroLauncher.App.Ui.Friends;
 
-namespace Dotjosh.DayZCommander.App.Core
+namespace zombiesnu.DayZeroLauncher.App.Core
 {
 	public class Friend : BindableBase
 	{

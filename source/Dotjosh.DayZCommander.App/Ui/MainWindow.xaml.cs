@@ -2,11 +2,11 @@
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
-using Dotjosh.DayZCommander.App.Core;
+using zombiesnu.DayZeroLauncher.App.Core;
 using Application = System.Windows.Application;
 using Control = System.Windows.Controls.Control;
 
-namespace Dotjosh.DayZCommander.App.Ui
+namespace zombiesnu.DayZeroLauncher.App.Ui
 {
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml

@@ -1,7 +1,7 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace Dotjosh.DayZCommander.App.Ui.ServerList
+namespace zombiesnu.DayZeroLauncher.App.Ui.ServerList
 {
 	/// <summary>
 	/// Interaction logic for FiltersView.xaml

@@ -1,8 +1,8 @@
-﻿<Application x:Class="Dotjosh.DayZCommander.App.App"
+﻿<Application x:Class="zombiesnu.DayZeroLauncher.App.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 			 xmlns:shell="clr-namespace:Microsoft.Windows.Shell;assembly=Microsoft.Windows.Shell"
-             xmlns:Converters="clr-namespace:Dotjosh.DayZCommander.App.Ui.Converters" 
+             xmlns:Converters="clr-namespace:zombiesnu.DayZeroLauncher.App.Ui.Converters" 
 			 StartupUri="Ui\MainWindow.xaml">
 	<Application.Resources>
 		<Converters:CountToVisibilityConverter x:Key="CountToVisibilityConverter" />

@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Dotjosh.DayZCommander.App.Ui.Favorites
+namespace zombiesnu.DayZeroLauncher.App.Ui.Favorites
 {
 	/// <summary>
 	/// Interaction logic for FavoritesView.xaml

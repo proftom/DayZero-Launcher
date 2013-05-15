@@ -4,7 +4,7 @@ using System.IO;
 using System.Windows;
 using NLog;
 
-namespace Dotjosh.DayZCommander.Updater
+namespace zombiesnu.DayZeroLauncher.Updater
 {
 	public partial class App
 	{

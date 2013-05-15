@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace Dotjosh.DayZCommander.App.Core
+namespace zombiesnu.DayZeroLauncher.App.Core
 {
 	[DataContract]
 	public class RecentServer : BindableBase
@@ -43,7 +43,7 @@ namespace Dotjosh.DayZCommander.App.Core
 			return server.IpAddress == _ipAddress && server.Port == _port;
 		}
 
-		public Server CreateServer()
+		/*public Server CreateServer()
 		{
 			Server = new Server(_ipAddress, _port);
 			Server.Settings = new SortedDictionary<string, string>()
@@ -52,7 +52,7 @@ namespace Dotjosh.DayZCommander.App.Core
 			                  	};
 			return Server;
 		}
-
+        */
 		public void RefreshAgo()
 		{
 			PropertyHasChanged("Ago");

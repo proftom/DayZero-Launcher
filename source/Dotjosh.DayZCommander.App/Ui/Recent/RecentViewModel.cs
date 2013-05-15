@@ -4,10 +4,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Timers;
 using Caliburn.Micro;
-using Dotjosh.DayZCommander.App.Core;
-using Dotjosh.DayZCommander.App.Ui.Friends;
+using zombiesnu.DayZeroLauncher.App.Core;
+using zombiesnu.DayZeroLauncher.App.Ui.Friends;
 
-namespace Dotjosh.DayZCommander.App.Ui.Recent
+namespace zombiesnu.DayZeroLauncher.App.Ui.Recent
 {
 	public class RecentViewModel : ViewModelBase, 
 		IHandle<RecentAdded>,
@@ -23,12 +23,12 @@ namespace Dotjosh.DayZCommander.App.Ui.Recent
 
 			Servers = new ObservableCollection<RecentServer>();
 
-			foreach(var recent in UserSettings.Current.RecentServers)
+		/*	foreach(var recent in UserSettings.Current.RecentServers)
 			{
 				recent.CreateServer();
 				AddToDictionary(recent);
 			}
-
+            */
 			_updateTimeTimer = new Timer(TimeSpan.FromMinutes(1).TotalMilliseconds);
 			_updateTimeTimer.Elapsed += UpdateTimeTimerOnElapsed;
 			_updateTimeTimer.Start();

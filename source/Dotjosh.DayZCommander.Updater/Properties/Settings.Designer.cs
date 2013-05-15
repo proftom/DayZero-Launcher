@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Dotjosh.DayZCommander.Updater.Properties
+namespace zombiesnu.DayZeroLauncher.Updater.Properties
 {
 
 

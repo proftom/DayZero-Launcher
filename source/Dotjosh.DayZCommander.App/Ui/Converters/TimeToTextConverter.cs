@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows.Data;
-using Dotjosh.DayZCommander.App.Core;
+using zombiesnu.DayZeroLauncher.App.Core;
 
-namespace Dotjosh.DayZCommander.App.Ui.Converters
+namespace zombiesnu.DayZeroLauncher.App.Ui.Converters
 {
 	public class TimeToTextConverter : IValueConverter
 	{

@@ -11,9 +11,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Dotjosh.DayZCommander.App.Core;
+using zombiesnu.DayZeroLauncher.App.Core;
 
-namespace Dotjosh.DayZCommander.App.Ui.Controls
+namespace zombiesnu.DayZeroLauncher.App.Ui.Controls
 {
 	/// <summary>
 	/// Interaction logic for NotesControl.xaml

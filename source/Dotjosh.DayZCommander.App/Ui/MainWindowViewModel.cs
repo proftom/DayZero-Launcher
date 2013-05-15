@@ -1,13 +1,13 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using Caliburn.Micro;
-using Dotjosh.DayZCommander.App.Core;
-using Dotjosh.DayZCommander.App.Ui.Favorites;
-using Dotjosh.DayZCommander.App.Ui.Friends;
-using Dotjosh.DayZCommander.App.Ui.Recent;
-using Dotjosh.DayZCommander.App.Ui.ServerList;
+using zombiesnu.DayZeroLauncher.App.Core;
+using zombiesnu.DayZeroLauncher.App.Ui.Favorites;
+using zombiesnu.DayZeroLauncher.App.Ui.Friends;
+using zombiesnu.DayZeroLauncher.App.Ui.Recent;
+using zombiesnu.DayZeroLauncher.App.Ui.ServerList;
 
-namespace Dotjosh.DayZCommander.App.Ui
+namespace zombiesnu.DayZeroLauncher.App.Ui
 {
 	public class MainWindowViewModel : ViewModelBase, 
 		IHandle<RepublishFriendsRequest>
