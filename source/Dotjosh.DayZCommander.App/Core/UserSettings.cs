@@ -193,16 +193,16 @@ namespace zombiesnu.DayZeroLauncher.App.Core
 				{
 
 					var appDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-					var DayZeroLauncherAppDataDirectory = new DirectoryInfo(Path.Combine(appDataFolder, "DayZeroLauncher"));
-					if (!DayZeroLauncherAppDataDirectory.Exists)
-						DayZeroLauncherAppDataDirectory.Create();
-					var newFileLocation = Path.Combine(DayZeroLauncherAppDataDirectory.FullName, "settings.xml");
+					var dayzCommanderAppDataDirectory = new DirectoryInfo(Path.Combine(appDataFolder, "DayZCommander"));
+					if (!dayzCommanderAppDataDirectory.Exists)
+						dayzCommanderAppDataDirectory.Create();
+					var newFileLocation = Path.Combine(dayzCommanderAppDataDirectory.FullName, "settings.xml");
 
 					//Migrate old settings location
 					try
 					{
 						var oldAppDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-						var oldFileLocation = Path.Combine(oldAppDataFolder, "DayZeroLauncher", "settings.xml");
+						var oldFileLocation = Path.Combine(oldAppDataFolder, "DayZCommander", "settings.xml");
 						;
 						if (File.Exists(oldFileLocation) && !File.Exists(newFileLocation))
 						{

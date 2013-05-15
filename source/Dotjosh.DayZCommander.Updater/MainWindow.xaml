@@ -11,7 +11,7 @@
 		BorderThickness="1"
         Title="MainWindow" Height="158" Width="415">
     <Grid>
-		<TextBlock Text="DayZero Launcher Is Applying an Update..."
+		<TextBlock Text="DayZ Commander Is Applying an Update..."
 				   VerticalAlignment="Center"
 				   HorizontalAlignment="Center"
 				   Foreground="#CCC"

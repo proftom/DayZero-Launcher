@@ -15,20 +15,20 @@ namespace zombiesnu.DayZeroLauncher.App.Ui.Converters
 
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
-			if((string) value == DayZeroLauncherUpdater.STATUS_CHECKINGFORUPDATES)
+			if((string) value == DayZCommanderUpdater.STATUS_CHECKINGFORUPDATES)
 			{
 				return InProgress;
 			}
-			if((string) value == DayZeroLauncherUpdater.STATUS_DOWNLOADING)
+			if((string) value == DayZCommanderUpdater.STATUS_DOWNLOADING)
 			{
 				return InProgress;
 			}
-			if((string) value == DayZeroLauncherUpdater.STATUS_RESTARTTOAPPLY
-				|| (string)value == DayZeroLauncherUpdater.STATUS_OUTOFDATE)
+			if((string) value == DayZCommanderUpdater.STATUS_RESTARTTOAPPLY
+				|| (string)value == DayZCommanderUpdater.STATUS_OUTOFDATE)
 			{
 				return ActionRequired;
 			}
-			if((string) value == DayZeroLauncherUpdater.STATUS_UPTODATE)
+			if((string) value == DayZCommanderUpdater.STATUS_UPTODATE)
 			{
 				return OK;
 			}

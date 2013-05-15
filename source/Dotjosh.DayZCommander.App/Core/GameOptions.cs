@@ -10,7 +10,7 @@ namespace zombiesnu.DayZeroLauncher.App.Core
         [DataMember] private bool _arma2OASteamUpdate;
 		[DataMember] private bool _windowedMode;
 		[DataMember] private bool _multiGpu;
-        [DataMember] private bool _closeDayZeroLauncher;
+        [DataMember] private bool _closeDayZCommander;
 		[DataMember] private string _arma2DirectoryOverride;
 		[DataMember] private string _arma2OaDirectoryOverride;
         [DataMember] private string _DayZDirectoryOverride;
@@ -71,13 +71,13 @@ namespace zombiesnu.DayZeroLauncher.App.Core
 			}
 		}
 
-        public bool CloseDayZeroLauncher
+        public bool CloseDayZCommander
         {
-            get { return _closeDayZeroLauncher; }
+            get { return _closeDayZCommander; }
             set
             {
-                _closeDayZeroLauncher = value;
-                PropertyHasChanged("CloseDayZeroLauncher");
+                _closeDayZCommander = value;
+                PropertyHasChanged("CloseDayZCommander");
                 UserSettings.Current.Save();
             }
         }

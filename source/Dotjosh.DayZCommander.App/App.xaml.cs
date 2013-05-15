@@ -48,7 +48,7 @@ namespace zombiesnu.DayZeroLauncher.App
 				                   		        	UseShellExecute = true,
 				                   		        	Arguments = "\"" + thisLocation + "\"",
 													WorkingDirectory = tempDir,
-				                   		        	FileName = Path.Combine(tempDir, "DayZeroLauncherUpdater.exe")
+				                   		        	FileName = Path.Combine(tempDir, "DayZCommanderUpdater.exe")
 				                   		        }
 				            };
 				p.Start();

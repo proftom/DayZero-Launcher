@@ -32,11 +32,11 @@ namespace zombiesnu.DayZeroLauncher.App.Ui
 
 			LocalMachineInfo = LocalMachineInfo.Current;
 			CalculatedGameSettings = CalculatedGameSettings.Current;
-			DayZeroLauncherUpdater = new DayZeroLauncherUpdater();
+			DayZCommanderUpdater = new DayZCommanderUpdater();
 			Arma2Updater = new Arma2Updater();
 			DayZUpdater = new DayZUpdater();
 
-			DayZeroLauncherUpdater.PropertyChanged += AnyModelPropertyChanged;
+			DayZCommanderUpdater.PropertyChanged += AnyModelPropertyChanged;
 			Arma2Updater.PropertyChanged += AnyModelPropertyChanged;
 			DayZUpdater.PropertyChanged += AnyModelPropertyChanged;
 
@@ -52,26 +52,26 @@ namespace zombiesnu.DayZeroLauncher.App.Ui
 		{
 			get
 			{
-				if(DayZeroLauncherUpdater.Status == DayZeroLauncherUpdater.STATUS_CHECKINGFORUPDATES
-					|| Arma2Updater.Status == DayZeroLauncherUpdater.STATUS_CHECKINGFORUPDATES
-					|| DayZUpdater.Status == DayZeroLauncherUpdater.STATUS_CHECKINGFORUPDATES)
-				return DayZeroLauncherUpdater.STATUS_DOWNLOADING;
+				if(DayZCommanderUpdater.Status == DayZCommanderUpdater.STATUS_CHECKINGFORUPDATES
+					|| Arma2Updater.Status == DayZCommanderUpdater.STATUS_CHECKINGFORUPDATES
+					|| DayZUpdater.Status == DayZCommanderUpdater.STATUS_CHECKINGFORUPDATES)
+				return DayZCommanderUpdater.STATUS_DOWNLOADING;
 
-				if(DayZeroLauncherUpdater.VersionMismatch 
+				if(DayZCommanderUpdater.VersionMismatch 
 				   || Arma2Updater.VersionMismatch
 				   || DayZUpdater.VersionMismatch)
-					return DayZeroLauncherUpdater.STATUS_OUTOFDATE;
+					return DayZCommanderUpdater.STATUS_OUTOFDATE;
 
-				if(!DayZeroLauncherUpdater.VersionMismatch 
+				if(!DayZCommanderUpdater.VersionMismatch 
 					&& !Arma2Updater.VersionMismatch
 					&& !DayZUpdater.VersionMismatch)
-					return DayZeroLauncherUpdater.STATUS_UPTODATE;
+					return DayZCommanderUpdater.STATUS_UPTODATE;
 
 				return "Error";
 			}
 		}
 
-		public DayZeroLauncherUpdater DayZeroLauncherUpdater { get; private set; }
+		public DayZCommanderUpdater DayZCommanderUpdater { get; private set; }
 		public Arma2Updater Arma2Updater { get; private set; }
 		public DayZUpdater DayZUpdater { get; private set; }
 		public LocalMachineInfo LocalMachineInfo { get; private set; }
@@ -93,7 +93,7 @@ namespace zombiesnu.DayZeroLauncher.App.Ui
 		{
 		    CalculatedGameSettings.Current.Update();
             LocalMachineInfo.Current.Update();
-			DayZeroLauncherUpdater.CheckForUpdate();
+			DayZCommanderUpdater.CheckForUpdate();
 			Arma2Updater.CheckForUpdates();
 			DayZUpdater.CheckForUpdates();
 		}

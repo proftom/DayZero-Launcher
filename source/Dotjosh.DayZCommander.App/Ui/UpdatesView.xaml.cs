@@ -46,7 +46,7 @@ namespace zombiesnu.DayZeroLauncher.App.Ui
 			((UpdatesViewModel) DataContext).DayZUpdater.InstallLatestVersion();
 		}
 
-		private void ApplyDayZeroLauncherUpdateNow_Click(object sender, RoutedEventArgs e)
+		private void ApplyDayZCommanderUpdateNow_Click(object sender, RoutedEventArgs e)
 		{
 			App.ApplyUpdateIfNeccessary();
 		}

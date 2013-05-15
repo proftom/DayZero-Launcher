@@ -38,31 +38,31 @@
 					   FontWeight="Bold"
 					   Margin="0 0 0 3"
 					   Foreground="#FFFFFF"/>
-                    <TextBlock Text="{Binding DayZeroLauncherUpdater.Status}"
-						   Foreground="{Binding DayZeroLauncherUpdater.Status, Converter={StaticResource UpdateStatusToForegroundConverter}}"
+                    <TextBlock Text="{Binding DayZCommanderUpdater.Status}"
+						   Foreground="{Binding DayZCommanderUpdater.Status, Converter={StaticResource UpdateStatusToForegroundConverter}}"
 						   Margin="12 0 0 0"/>
                     </StackPanel>
                     <StackPanel Margin="0 8 0 0">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Your Version: "
 							   Foreground="#DDD"/>
-                            <TextBlock Text="{Binding LocalMachineInfo.Current.DayZeroLauncherVersion}"
+                            <TextBlock Text="{Binding LocalMachineInfo.Current.DayZCommanderVersion}"
 							   Foreground="#FFFFFF"/>
                         </StackPanel>
                         <StackPanel Margin="0 9 0 0"
 							Orientation="Horizontal">
                             <TextBlock Text="Latest Version: "
 								   Foreground="#DDD"/>
-                            <TextBlock Text="{Binding DayZeroLauncherUpdater.LatestVersion}"
+                            <TextBlock Text="{Binding DayZCommanderUpdater.LatestVersion}"
 							   Foreground="#FFFFFF"/>
                         </StackPanel>
                         <Button Content="apply now" 
 						Foreground="LightGreen"
-						Visibility="{Binding DayZeroLauncherUpdater.UpdatePending, Converter={StaticResource BooleanToVisibilityCollapsedConverter}}"
+						Visibility="{Binding DayZCommanderUpdater.UpdatePending, Converter={StaticResource BooleanToVisibilityCollapsedConverter}}"
 						Margin="0 8 0 0"
 						Background="#444444"
                                 HorizontalAlignment="Left"
-						Click="ApplyDayZeroLauncherUpdateNow_Click"
+						Click="ApplyDayZCommanderUpdateNow_Click"
 						Style="{StaticResource MetroButtonStyle}"/>
 
                         <TextBlock Text="{Binding Arma2Updater.Installer.Status}"

@@ -12,7 +12,7 @@ namespace zombiesnu.DayZeroLauncher.Updater
 
 		public VersionChecker()
 		{
-			_versionUri = new Uri("http://files.DayZeroLauncher.com/releases/versioninfo.txt");
+			_versionUri = new Uri("http://files.dayzcommander.com/releases/versioninfo.txt");
 			_thisVersion = Assembly.GetEntryAssembly().GetName().Version;
 		}
 

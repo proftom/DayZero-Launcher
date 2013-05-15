@@ -40,7 +40,7 @@
 					  Foreground="#DDDDDD"
 					  Margin="0 42 0 0"/>
                     <CheckBox Content="Close DayZero Launcher (after joining a server)"
-					  IsChecked="{Binding Settings.GameOptions.CloseDayZeroLauncher, Mode=TwoWay}"
+					  IsChecked="{Binding Settings.GameOptions.CloseDayZCommander, Mode=TwoWay}"
 					  Foreground="#DDDDDD"
 					  Margin="0 8 0 0"/>
                     <CheckBox Content="Replace original Arma2OA files with Beta so Steam works"
