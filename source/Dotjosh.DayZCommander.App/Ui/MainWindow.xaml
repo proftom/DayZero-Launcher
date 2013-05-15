@@ -6,7 +6,7 @@
 		xmlns:Core="clr-namespace:zombiesnu.DayZeroLauncher.App.Core" xmlns:Ui="clr-namespace:zombiesnu.DayZeroLauncher.App.Ui"
 		xmlns:Favorites="clr-namespace:zombiesnu.DayZeroLauncher.App.Ui.Favorites"
 		xmlns:Recent="clr-namespace:zombiesnu.DayZeroLauncher.App.Ui.Recent" Title="DayZero Launcher" 
-		Height="470" 
+		Height="420" 
 		Width="870"
 		MouseLeftButtonDown="MainWindow_OnMouseLeftButtonDown"
 		MouseDoubleClick="MainWindow_OnMouseDoubleClick"
@@ -24,14 +24,14 @@
 
 			<Ui:SettingsView DataContext="{Binding SettingsViewModel}"
 							 Grid.RowSpan="5"
-							 Width="590"
+							 Width="520"
 							 HorizontalAlignment="Right"
-							 Canvas.ZIndex="1001"
+							 Canvas.ZIndex="1000"
 								 Visibility="{Binding IsVisible, Converter={StaticResource BooleanToVisibilityCollapsedConverter}, FallbackValue=Hidden}"/>
 
 			<Ui:UpdatesView DataContext="{Binding UpdatesViewModel}"
 							 Grid.RowSpan="5"
-							 Width="500"
+							 Width="200"
 							 HorizontalAlignment="Right"
 							 Canvas.ZIndex="1000"
 								 Visibility="{Binding IsVisible, Converter={StaticResource BooleanToVisibilityCollapsedConverter}, FallbackValue=Hidden}"/>
