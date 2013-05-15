@@ -33,8 +33,8 @@ namespace zombiesnu.DayZeroLauncher.App.Ui.ServerList
 		{
 			var server = (Server) obj;
 
-			if(_filter != null)
-				return _filter(server);
+			//if(_filter != null)
+			//	return _filter(server);
 			return true;
 		}
 
