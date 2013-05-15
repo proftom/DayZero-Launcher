@@ -56,7 +56,7 @@ namespace zombiesnu.DayZeroLauncher.App.Core
 
 			_isChecking = true;
 
-			Status = DayZCommanderUpdater.STATUS_CHECKINGFORUPDATES;
+			Status = DayZeroLauncherUpdater.STATUS_CHECKINGFORUPDATES;
 
 			string responseBody;
 			int? latestRevision = null;
@@ -89,11 +89,11 @@ namespace zombiesnu.DayZeroLauncher.App.Core
 								{
 									if(LocalMachineInfo.Current.Arma2OABetaVersion == null || LocalMachineInfo.Current.Arma2OABetaVersion.Revision != latestRevision)
 									{
-										Status = DayZCommanderUpdater.STATUS_OUTOFDATE;
+										Status = DayZeroLauncherUpdater.STATUS_OUTOFDATE;
 									}
 									else
 									{
-										Status = DayZCommanderUpdater.STATUS_UPTODATE;
+                                        Status = DayZeroLauncherUpdater.STATUS_UPTODATE;
 									}
 								}	
 								else

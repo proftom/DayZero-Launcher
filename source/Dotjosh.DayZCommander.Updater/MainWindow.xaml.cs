@@ -32,7 +32,7 @@ namespace zombiesnu.DayZeroLauncher.Updater
 			catch(Exception ex)
 			{
 				_logger.Error(ex);
-				LaunchDayZCommander();
+				LaunchDayZeroLauncher();
 				Environment.Exit(0);
 			}
 		}
@@ -50,7 +50,7 @@ namespace zombiesnu.DayZeroLauncher.Updater
 				var tempUpdatePath = string.Format("{0}{1}", Path.GetTempPath(), Guid.NewGuid());
 				var lastVersionPath = string.Format("{0}{1}", Path.GetTempPath(), Guid.NewGuid());
 
-				KillDayzCommanderProcesses();
+				KillDayZeroLauncherProcesses();
 				Directory.Move(pendingUpdateDirectory, tempUpdatePath);
 				Directory.Move(installDirectory, lastVersionPath);
 				Directory.Move(tempUpdatePath, installDirectory);
@@ -62,7 +62,7 @@ namespace zombiesnu.DayZeroLauncher.Updater
 				var tempUpdatePath = string.Format("{0}{1}", tempDirectory, Guid.NewGuid());
 				var lastVersionPath = string.Format("{0}{1}", tempDirectory, Guid.NewGuid());
 
-				KillDayzCommanderProcesses();
+				KillDayZeroLauncherProcesses();
 				Directory.Move(pendingUpdateDirectory, tempUpdatePath);
 				Directory.Move(installDirectory, lastVersionPath);
 				Directory.Move(tempUpdatePath, installDirectory);
@@ -75,10 +75,10 @@ namespace zombiesnu.DayZeroLauncher.Updater
 				}
 			}
 			UpdateShortcuts(Directory.GetParent(installDirectory).FullName);
-			LaunchDayZCommander();
+			LaunchDayZeroLauncher();
 		}
 
-		private static void LaunchDayZCommander()
+		private static void LaunchDayZeroLauncher()
 		{
 			var p = new Process
 			        	{
@@ -87,21 +87,21 @@ namespace zombiesnu.DayZeroLauncher.Updater
 			        		            		CreateNoWindow = false,
 			        		            		UseShellExecute = true,
 			        		            		WorkingDirectory = App.ApplicationInstallDirectory,
-			        		            		FileName = Path.Combine(App.ApplicationInstallDirectory, "DayZCommander.exe")
+			        		            		FileName = Path.Combine(App.ApplicationInstallDirectory, "DayZeroLauncher.exe")
 			        		            	}
 			        	};
 			p.Start();
 			Environment.Exit(0);
 		}
 
-		private static void KillDayzCommanderProcesses()
+		private static void KillDayZeroLauncherProcesses()
 		{
 			//Give it 10 times to kill all the dayz processes
 			for(var i = 0; i < 10; i++)
 			{
 				try
 				{
-					var processes = Process.GetProcessesByName("DayZCommander");
+					var processes = Process.GetProcessesByName("DayZeroLauncher");
 					if(processes.Length == 0)
 					{
 						return;
@@ -112,7 +112,7 @@ namespace zombiesnu.DayZeroLauncher.Updater
 						process.Kill();
 					}
 
-					processes = Process.GetProcessesByName("DayZCommander");
+					processes = Process.GetProcessesByName("DayZeroLauncher");
 					if(processes.Length == 0)
 					{
 						return;
@@ -120,7 +120,7 @@ namespace zombiesnu.DayZeroLauncher.Updater
 
 					if(i == 9)
 					{
-						_logger.Log(LogLevel.Error, "Could not apply update, the DayZCommander process could not be closed.");
+						_logger.Log(LogLevel.Error, "Could not apply update, the DayZeroLauncher process could not be closed.");
 					}
 
 					Thread.Sleep(100);

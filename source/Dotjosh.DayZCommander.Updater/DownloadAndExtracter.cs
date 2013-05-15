@@ -27,7 +27,7 @@ namespace zombiesnu.DayZeroLauncher.Updater
 		public DownloadAndExtracter(Version serverVersion)
 		{
 			_serverVersion = serverVersion;
-			_serverZipUri = new Uri(String.Format("http://files.dayzcommander.com/releases/{0}.zip", _serverVersion));
+			_serverZipUri = new Uri(String.Format("http://files.DayZeroLauncher.com/releases/{0}.zip", _serverVersion));
 			var uniqueToken = Guid.NewGuid().ToString();
 			_tempDownloadFileLocation = DownloadAndExtracter.GetTempPath() + uniqueToken + ".zip";
 			_tempExtractedLocation = DownloadAndExtracter.GetTempPath() + uniqueToken;
@@ -72,11 +72,11 @@ namespace zombiesnu.DayZeroLauncher.Updater
 			{
 				return null;
 			}
-			var pendingUpdateDayZCommanderFile = new FileInfo(Path.Combine(_targetSwapDirectory, "DayZCommander.exe"));
-			if(!pendingUpdateDayZCommanderFile.Exists)
+			var pendingUpdateDayZeroLauncherFile = new FileInfo(Path.Combine(_targetSwapDirectory, "DayZeroLauncher.exe"));
+			if(!pendingUpdateDayZeroLauncherFile.Exists)
 				return null;
 
-			return AssemblyName.GetAssemblyName(pendingUpdateDayZCommanderFile.FullName).Version;
+			return AssemblyName.GetAssemblyName(pendingUpdateDayZeroLauncherFile.FullName).Version;
 		}
 
 		private void DownloadFileComplete(object sender, AsyncCompletedEventArgs args)

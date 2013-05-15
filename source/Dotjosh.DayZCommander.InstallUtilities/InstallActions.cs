@@ -9,7 +9,7 @@ namespace zombiesnu.DayZeroLauncher.InstallUtilities
 	[RunInstaller(true)]
 	public partial class InstallActions : Installer
 	{
-		private const string _mainExecutable = "DayZCommander.exe";
+		private const string _mainExecutable = "DayZeroLauncher.exe";
 
 		public InstallActions()
 		{
@@ -37,42 +37,42 @@ namespace zombiesnu.DayZeroLauncher.InstallUtilities
 		{
 			if(DeleteShortcut(InstallDirectory))
 			{
-				CreateDayZCommanderShortcut(InstallDirectory);
+				CreateDayZeroLauncherShortcut(InstallDirectory);
 			}
 			if(DeleteShortcut(Environment.GetFolderPath(Environment.SpecialFolder.CommonDesktopDirectory)))
 			{
-				CreateDayZCommanderShortcut(Environment.GetFolderPath(Environment.SpecialFolder.CommonDesktopDirectory));
+				CreateDayZeroLauncherShortcut(Environment.GetFolderPath(Environment.SpecialFolder.CommonDesktopDirectory));
 			}
 			if(DeleteShortcut(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)))
 			{
-				CreateDayZCommanderShortcut(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory));
+				CreateDayZeroLauncherShortcut(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory));
 			}
 			if(DeleteShortcut(Environment.GetFolderPath(Environment.SpecialFolder.CommonStartMenu)))
 			{
-				CreateDayZCommanderShortcut(Environment.GetFolderPath(Environment.SpecialFolder.CommonStartMenu));
+				CreateDayZeroLauncherShortcut(Environment.GetFolderPath(Environment.SpecialFolder.CommonStartMenu));
 			}
 			if(DeleteShortcut(Environment.GetFolderPath(Environment.SpecialFolder.StartMenu)))
 			{
-				CreateDayZCommanderShortcut(Environment.GetFolderPath(Environment.SpecialFolder.StartMenu));
+				CreateDayZeroLauncherShortcut(Environment.GetFolderPath(Environment.SpecialFolder.StartMenu));
 			}
 		}
 
 		private void CreateShortcuts()
 		{
 			var allUsers = Context.Parameters["allusers"];
-			CreateDayZCommanderShortcut(InstallDirectory);
+			CreateDayZeroLauncherShortcut(InstallDirectory);
 			if(!string.IsNullOrEmpty(allUsers)
 				&& allUsers.Equals("1"))
 			{
 				// Everyone.
-				CreateDayZCommanderShortcut(Environment.GetFolderPath(Environment.SpecialFolder.CommonDesktopDirectory));
-				CreateDayZCommanderShortcut(Environment.GetFolderPath(Environment.SpecialFolder.CommonStartMenu));
+				CreateDayZeroLauncherShortcut(Environment.GetFolderPath(Environment.SpecialFolder.CommonDesktopDirectory));
+				CreateDayZeroLauncherShortcut(Environment.GetFolderPath(Environment.SpecialFolder.CommonStartMenu));
 			}
 			else
 			{
 				// Just me.
-				CreateDayZCommanderShortcut(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory));
-				CreateDayZCommanderShortcut(Environment.GetFolderPath(Environment.SpecialFolder.StartMenu));
+				CreateDayZeroLauncherShortcut(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory));
+				CreateDayZeroLauncherShortcut(Environment.GetFolderPath(Environment.SpecialFolder.StartMenu));
 			}
 		}
 
@@ -84,7 +84,7 @@ namespace zombiesnu.DayZeroLauncher.InstallUtilities
 			DeleteShortcut(Environment.GetFolderPath(Environment.SpecialFolder.StartMenu));
 		}
 
-		private void CreateDayZCommanderShortcut(string shortcutPath)
+		private void CreateDayZeroLauncherShortcut(string shortcutPath)
 		{
 			var workingDirectory = Path.Combine(InstallDirectory, @"Current");
 			var targetPath = Path.Combine(workingDirectory, _mainExecutable);

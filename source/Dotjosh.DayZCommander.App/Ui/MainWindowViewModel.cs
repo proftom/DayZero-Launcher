@@ -32,7 +32,7 @@ namespace zombiesnu.DayZeroLauncher.App.Ui
 			UpdatesViewModel = new UpdatesViewModel();
 		}
 
-		public DayZCommanderUpdater Updater { get; private set; }
+		public DayZeroLauncherUpdater Updater { get; private set; }
 		public ServerListViewModel ServerListViewModel { get; set; }
 		public SettingsViewModel SettingsViewModel { get; set; }
 		public UpdatesViewModel UpdatesViewModel { get; set; }

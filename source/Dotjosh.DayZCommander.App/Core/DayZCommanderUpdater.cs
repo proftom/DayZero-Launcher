@@ -3,7 +3,7 @@ using zombiesnu.DayZeroLauncher.Updater;
 
 namespace zombiesnu.DayZeroLauncher.App.Core
 {
-	public class DayZCommanderUpdater : BindableBase
+    public class DayZeroLauncherUpdater : BindableBase
 	{
 		private string _status;
 		private Version _latestVersion;
@@ -45,8 +45,8 @@ namespace zombiesnu.DayZeroLauncher.App.Core
 			{
 				if(LatestVersion == null)
 					return false;
-				
-				return !LocalMachineInfo.Current.DayZCommanderVersion.Equals(LatestVersion);
+
+                return !LocalMachineInfo.Current.DayZeroLauncherVersion.Equals(LatestVersion);
 			}
 		}
 

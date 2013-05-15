@@ -23,7 +23,7 @@ namespace zombiesnu.DayZeroLauncher.App.Core
 			}
 		}
 
-		public Version DayZCommanderVersion
+		public Version DayZeroLauncherVersion
 		{
 			get { return Assembly.GetEntryAssembly().GetName().Version; }
 		}

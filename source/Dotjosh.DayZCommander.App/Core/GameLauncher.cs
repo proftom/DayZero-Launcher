@@ -88,7 +88,7 @@ namespace zombiesnu.DayZeroLauncher.App.Core
 
 				//UserSettings.Current.AddRecent(server);
 
-                if(UserSettings.Current.GameOptions.CloseDayZCommander){
+                if(UserSettings.Current.GameOptions.CloseDayZeroLauncher){
                     Thread.Sleep(1000);
                     Environment.Exit(0);
                 }
